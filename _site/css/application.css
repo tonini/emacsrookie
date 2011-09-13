@@ -167,6 +167,9 @@ body {
   background: rgba(238, 238, 238, 0.19);
 }
 
+#disqus_thread {
+  margin: 20px 0 0 0;
+}
 
 #copyright {
   width: 700px;
