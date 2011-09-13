@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <meta name="description" content="">
+    <meta name="author" content="Samuel Tonini">
+
+    <link rel="stylesheet" href="/css/reset.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="/css/application.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="/css/code.css" type="text/css" media="screen, projection" />
+
+    <title>Do you remember? EmacsRookie</title>
+
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-2950562-2']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+  </head>
+  <body>
+    <div id="container">
+      <nav id="main_nav">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+        </ul>
+      </nav>
+
+      <header id="topbar">
+        <a href="/"><h1>emacs<span class="emacs">rookie</span></h1></a>
+        <h2>Hints about the powerful emacs text editor</h2>
+      </header>
+
+      <div id="main" role="main">
+        
+
+<article class="post">
+  <header>
+    <h2><span class="hint">Hint #1</span>September 13, 2011</h2>
+    <h1>Do you remember?</h1>
+  </header>
+  <p>Remember is a mode for Emacs, to simpy remember data.
+I&rsquo;m a big fan of <a href="http://orgmode.org/">org-mode</a>, but to create notes on the fly
+without having to switch to my org file, I prefer Remember. Since
+Emacs version 23.1 Remember is built in and it&rsquo;s doing a good job
+without any special configurations needed.</p>
+
+<h3>How to use straight ahead?</h3>
+
+<p>To jump in the note Remember buffer, simpy call the
+<code>remember</code> function. You will see an empty buffer if you are using it for the
+first time and there is no <code>~/.notes</code> file.
+Below your current cursor position you will see the file path from
+which you called the <code>remember</code> function.</p>
+
+<div class="highlight"><pre><code class="text"># The cursor will be positioned above the file path
+/path/to/your/file.rb
+</code></pre>
+</div>
+
+
+<p>Add your notes and after you&rsquo;re finished, just call the <code>remember-finalize</code> function,
+or use the default key-binding <code>C-c C-c</code>. By default the note will be
+stored in <code>&lt;your_home_directory&gt;/.notes</code>.</p>
+
+<div class="highlight"><pre><code class="text">** Mon Sep 12 16:02:03 2011 (Refactor)
+
+Refactor
+
+I should refactor some code smell in this file...
+
+/path/to/your/file.rb
+</code></pre>
+</div>
+
+
+<p>Done. That&rsquo;s it! That&rsquo;s the easy way to use it without any magic
+and store your notes on the fly.</p>
+
+<h3>More functions</h3>
+
+<p>There are a few other functions which are also very useful.</p>
+
+<p><code>remember-destroy</code> just destroy the current Remember buffer you&rsquo;re in.</p>
+
+<p><code>remember-region</code> without opening the selected region in the Remember buffer &ndash; it saves the text directly into your notes file.</p>
+
+<p><code>remember-clipboard</code> writes your current clipboard contents to your notes file.</p>
+
+<p>I would recommend that you just inspect the source of Remember on your own to get
+an overview of the full functionality.</p>
+
+<h3>Some customization</h3>
+
+<p>To change the file name in which you want to store your notes from
+<code>.todos</code> to <code>.notes</code> just overwrite the <code>remember-data-file</code> variable.</p>
+
+<div class="highlight"><pre><code class="scheme"><span class="p">(</span><span class="nf">defcustom</span> <span class="nv">remember-data-file</span> <span class="p">(</span><span class="nf">convert-standard-filename</span> <span class="s">&quot;~/.todos&quot;</span><span class="p">)</span>
+  <span class="s">&quot;The file in which to store unprocessed data.&quot;</span>
+  <span class="nv">:type</span> <span class="ss">&#39;file</span>
+  <span class="nv">:group</span> <span class="ss">&#39;remember</span><span class="p">)</span>
+</code></pre>
+</div>
+
+
+<p>Or the leading text, which is used to begin each created note.</p>
+
+<div class="highlight"><pre><code class="scheme"><span class="p">(</span><span class="nf">defcustom</span> <span class="nv">remember-leader-text</span> <span class="s">&quot;** &quot;</span>
+  <span class="s">&quot;The text used to begin each remember item.&quot;</span>
+  <span class="nv">:type</span> <span class="ss">&#39;string</span>
+  <span class="nv">:group</span> <span class="ss">&#39;remember</span><span class="p">)</span>
+</code></pre>
+</div>
+
+
+<h3>Further information</h3>
+
+<p>A lot of people use Remember with org-mode (<a href="http://orgmode.org/org-remember.pdf">org-remember</a> documentation).
+But since version 6.36, org-mode has its own Remember-like feature
+implemented (see <a href="http://orgmode.org/manual/Capture.html">Capture</a>),
+If you&rsquo;re using org-mode already, I would recommend to use that instead of Remember.</p>
+
+<p>In a further article I will show you how to use Capture, instead of Remember and how org-mode serves you some cool features with Capture.</p>
+
+</article>
+
+
+      </div>
+
+      <footer id="copyright">
+        <p>&copy; 2011 emacsrookie.com, All Rights Reserved.</p>
+        <p class="rss">
+          <a href ="http://feeds.feedburner.com/emacsrookiecom">
+            <img src="/images/feed-16x16.png" alt="RSS Feed">
+          </a>
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+
+<!-- RSS as a "standard" is terrible; use Atom.  -coyled -->
+<!-- http://coyled.com/atom.xml -->
+
+  <channel>
+    <title>emacsrookie.com</title>
+    <link>http://emacsrookie.com/</link>
+    <atom:link href="http://emacsrookie.com/rss.xml" rel="self" type="application/rss+xml" />
+    <description>Hints about the powerful emacs text editor</description>
+    <language>en-us</language>
+    <pubDate>Tue, 13 Sep 2011 08:17:09 CEST</pubDate>
+    <lastBuildDate>Tue, 13 Sep 2011 08:17:09 CEST</lastBuildDate>
+
+    
+    <item>
+      <title>Do you remember?</title>
+      <link>http://emacsrookie.com/2011/09/13/do-you-remember/</link>
+      <pubDate>Tue, 13 Sep 2011 00:00:00 CEST</pubDate>
+      <author>tonini.samuel@gmail.com (Samuel Tonini)</author>
+      <guid>http://emacsrookie.com/2011/09/13/do-you-remember</guid>
+      <description>&lt;p&gt;Remember is a mode for Emacs, to simpy remember data.
+I&amp;rsquo;m a big fan of &lt;a href=&quot;http://orgmode.org/&quot;&gt;org-mode&lt;/a&gt;, but to create notes on the fly
+without having to switch to my org file, I prefer Remember. Since
+Emacs version 23.1 Remember is built in and it&amp;rsquo;s doing a good job
+without any special configurations needed.&lt;/p&gt;
+
+&lt;h3&gt;How to use straight ahead?&lt;/h3&gt;
+
+&lt;p&gt;To jump in the note Remember buffer, simpy call the
+&lt;code&gt;remember&lt;/code&gt; function. You will see an empty buffer if you are using it for the
+first time and there is no &lt;code&gt;~/.notes&lt;/code&gt; file.
+Below your current cursor position you will see the file path from
+which you called the &lt;code&gt;remember&lt;/code&gt; function.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text&quot;&gt;# The cursor will be positioned above the file path
+/path/to/your/file.rb
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+
+&lt;p&gt;Add your notes and after you&amp;rsquo;re finished, just call the &lt;code&gt;remember-finalize&lt;/code&gt; function,
+or use the default key-binding &lt;code&gt;C-c C-c&lt;/code&gt;. By default the note will be
+stored in &lt;code&gt;&amp;lt;your_home_directory&amp;gt;/.notes&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text&quot;&gt;** Mon Sep 12 16:02:03 2011 (Refactor)
+
+Refactor
+
+I should refactor some code smell in this file...
+
+/path/to/your/file.rb
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+
+&lt;p&gt;Done. That&amp;rsquo;s it! That&amp;rsquo;s the easy way to use it without any magic
+and store your notes on the fly.&lt;/p&gt;
+
+&lt;h3&gt;More functions&lt;/h3&gt;
+
+&lt;p&gt;There are a few other functions which are also very useful.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;remember-destroy&lt;/code&gt; just destroy the current Remember buffer you&amp;rsquo;re in.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;remember-region&lt;/code&gt; without opening the selected region in the Remember buffer &amp;ndash; it saves the text directly into your notes file.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;remember-clipboard&lt;/code&gt; writes your current clipboard contents to your notes file.&lt;/p&gt;
+
+&lt;p&gt;I would recommend that you just inspect the source of Remember on your own to get
+an overview of the full functionality.&lt;/p&gt;
+
+&lt;h3&gt;Some customization&lt;/h3&gt;
+
+&lt;p&gt;To change the file name in which you want to store your notes from
+&lt;code&gt;.todos&lt;/code&gt; to &lt;code&gt;.notes&lt;/code&gt; just overwrite the &lt;code&gt;remember-data-file&lt;/code&gt; variable.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scheme&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;defcustom&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;remember-data-file&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;convert-standard-filename&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;~/.todos&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&amp;quot;The file in which to store unprocessed data.&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;:type&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;file&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;:group&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;remember&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+
+&lt;p&gt;Or the leading text, which is used to begin each created note.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scheme&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;defcustom&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;remember-leader-text&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;** &amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&amp;quot;The text used to begin each remember item.&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;:type&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;string&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;:group&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;remember&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+
+&lt;h3&gt;Further information&lt;/h3&gt;
+
+&lt;p&gt;A lot of people use Remember with org-mode (&lt;a href=&quot;http://orgmode.org/org-remember.pdf&quot;&gt;org-remember&lt;/a&gt; documentation).
+But since version 6.36, org-mode has its own Remember-like feature
+implemented (see &lt;a href=&quot;http://orgmode.org/manual/Capture.html&quot;&gt;Capture&lt;/a&gt;),
+If you&amp;rsquo;re using org-mode already, I would recommend to use that instead of Remember.&lt;/p&gt;
+
+&lt;p&gt;In a further article I will show you how to use Capture, instead of Remember and how org-mode serves you some cool features with Capture.&lt;/p&gt;
+</description>
+    </item>
+    
+
+  </channel>
+</rss>
