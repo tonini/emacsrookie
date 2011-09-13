@@ -1,6 +1,6 @@
 ---
 title: Do you remember?
-summary: Through the day there are many things which pop up in your head. How to catch them on the fly or get back if needed? In this article we will see how Remember will help you with these kind of tasks.
+summary: Through the day there are many things which pop up in your head. How to catch them on the fly or get back if needed? In this article you will see how Remember will help you with these kind of tasks.
 hint: 1
 layout: post
 ---
