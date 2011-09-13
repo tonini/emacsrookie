@@ -171,6 +171,11 @@ body {
   margin: 20px 0 0 0;
 }
 
+#disqus_thread a {
+  color: #808b5d;
+  font-weight: bold;
+}
+
 #copyright {
   width: 700px;
   margin: 0 auto;
