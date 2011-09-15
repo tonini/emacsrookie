@@ -167,6 +167,10 @@ body {
   background: rgba(238, 238, 238, 0.19);
 }
 
+#social_buttons {
+  margin-top: 15px;
+}
+
 #disqus_thread {
   margin: 20px 0 0 0;
 }
