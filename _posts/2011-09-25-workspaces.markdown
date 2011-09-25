@@ -25,7 +25,7 @@ First you have to install perspective, you get the source on
 [Github](http://github.com/nex3/perspective-el).
 
 Then you need to put the perspective.el file somewhere in your `load-path`
-and add the following to your `~/.emacs file.
+and add the following to your `~/.emacs` file.
 
 {% highlight scheme %}
 ;; Load Perspective
