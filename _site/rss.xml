@@ -10,9 +10,113 @@
     <atom:link href="http://emacsrookie.com/rss.xml" rel="self" type="application/rss+xml" />
     <description>Hints about the powerful emacs text editor</description>
     <language>en-us</language>
-    <pubDate>Tue, 13 Sep 2011 12:06:06 CEST</pubDate>
-    <lastBuildDate>Tue, 13 Sep 2011 12:06:06 CEST</lastBuildDate>
+    <pubDate>Sun, 25 Sep 2011 14:41:29 CEST</pubDate>
+    <lastBuildDate>Sun, 25 Sep 2011 14:41:29 CEST</lastBuildDate>
 
+    
+    <item>
+      <title>Workspaces</title>
+      <link>http://emacsrookie.com/2011/09/25/workspaces/</link>
+      <pubDate>Sun, 25 Sep 2011 00:00:00 CEST</pubDate>
+      <author>tonini.samuel@gmail.com (Samuel Tonini)</author>
+      <guid>http://emacsrookie.com/2011/09/25/workspaces</guid>
+      <description>&lt;p&gt;Perspective is an emacs package by &lt;a href=&quot;http://nex-3.com/&quot;&gt;Nathan Weizenbaum&lt;/a&gt;, which offers the
+possibility of working with different workspaces. If you are used to a
+windows manager (like Fluxbox, Gnome, KDE etc. for instance), you
+know the advantages of switching between several desktops or setting up
+different desktops for your purposes.&lt;/p&gt;
+
+&lt;p&gt;In my daily grind I switch often between projects, fixing a bug
+there or reading some source codes here. This possibility of working this way is extremely helpful.
+It&amp;rsquo;s hard imagining not to be able to use it.&lt;/p&gt;
+
+&lt;p&gt;Perspective gives you tagged workspaces and because each perspective
+(workspace) is composed of a window configuration and a set of
+buffers, switching to a perspective will only make the buffers
+available which belong to it.&lt;/p&gt;
+
+&lt;h3&gt;How to use it straight ahead?&lt;/h3&gt;
+
+&lt;p&gt;First you have to install perspective, you get the source on
+&lt;a href=&quot;http://github.com/nex3/perspective-el&quot;&gt;Github&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Then you need to put the perspective.el file somewhere in your &lt;code&gt;load-path&lt;/code&gt;
+and add the following to your `~/.emacs file.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scheme&quot;&gt;&lt;span class=&quot;c1&quot;&gt;;; Load Perspective&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;perspective&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;;; Toggle the perspective mode&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;persp-mode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+
+&lt;p&gt;From now on you are ready to go. Perspective is easy to use and you
+will be familiar with its functionality in no time.&lt;/p&gt;
+
+&lt;p&gt;What you will use mostly are &lt;code&gt;persp-switch&lt;/code&gt;. With this function you
+switch to the perspective you want, if the specified perspective
+doesn&amp;rsquo;t exist, it will create a new one and switch to it.&lt;/p&gt;
+
+&lt;p&gt;Sometimes you need to rename a perspective and for this action use the function
+ &lt;code&gt;persp-rename&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Another useful function is &lt;code&gt;persp-add-buffer&lt;/code&gt;, just
+add a buffer to your chosen perspective. The vice-versa function of
+it is &lt;code&gt;persp-remove-buffer&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3&gt;More functions&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;pesp-kill&lt;/code&gt; just kill a not anymore used perspective.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;persp-import&lt;/code&gt; import a perspective from another frame.&lt;/p&gt;
+
+&lt;h3&gt;Some customization&lt;/h3&gt;
+
+&lt;p&gt;Yves Senn, a friend of mine did a great job customizing
+perspective. He defined a macro which takes two arguments : the &lt;code&gt;name&lt;/code&gt; for the
+perspective and the &lt;code&gt;body&lt;/code&gt; which contains the code that will be evaluated after creating
+the perspective. So what you can do now is to define your custom
+function using the macro.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scheme&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;defmacro&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;custom-persp&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;&amp;amp;rest&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+       &lt;span class=&quot;o&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;let &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;initialize&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;not &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;gethash&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;perspectives-hash&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+              &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;current-perspective&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;persp-curr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+          &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;persp-switch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+          &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;when&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;initialize&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;,@&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+          &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;setq&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;persp-last&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;current-perspective&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+
+&lt;p&gt;For instance, create a &lt;code&gt;@org&lt;/code&gt;
+named perspective and open the first agenda file.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scheme&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;defun&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;custom-persp/org&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;interactive&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;custom-persp&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;@org&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;find-file&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;first&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;org-agenda-files&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+
+&lt;p&gt;At last, just create a key binding for the function.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scheme&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;global-set-key&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;kbd&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;C-p o&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;custom-persp/org&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+
+&lt;p&gt;You find the whole source in the &lt;a href=&quot;&quot;&gt;emacs-configs&lt;/a&gt; repository from Yves Senn.&lt;/p&gt;
+
+&lt;h3&gt;Summary&lt;/h3&gt;
+
+&lt;p&gt;Perspective is definitly a well written package&lt;/p&gt;
+
+&lt;p&gt;I recommend reading through the Perspective source and make yourself
+more familiar with whats going on beyond all these functions.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Do you remember?</title>
