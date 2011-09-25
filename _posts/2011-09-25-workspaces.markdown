@@ -87,7 +87,7 @@ At last, just create a key binding for the function.
 (global-set-key (kbd "C-p o") 'custom-persp/org)
 {% endhighlight %}
 
-You find the whole source in the [emacs-configs]() repository from Yves Senn.
+You find the whole source in the [emacs-configs](https://github.com/senny/emacs-configs/blob/master/private/extensions/perspectives.el) repository from Yves Senn.
 
 ### Summary
 
