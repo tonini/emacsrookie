@@ -192,3 +192,7 @@ body {
 #copyright .rss {
   float: right;
 }
+
+.dsq-brlink {
+  display: none;
+}
