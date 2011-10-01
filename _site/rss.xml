@@ -10,9 +10,118 @@
     <atom:link href="http://emacsrookie.com/rss.xml" rel="self" type="application/rss+xml" />
     <description>Hints about the powerful emacs text editor</description>
     <language>en-us</language>
-    <pubDate>Sun, 25 Sep 2011 14:52:43 CEST</pubDate>
-    <lastBuildDate>Sun, 25 Sep 2011 14:52:43 CEST</lastBuildDate>
+    <pubDate>Sat, 01 Oct 2011 23:02:50 CEST</pubDate>
+    <lastBuildDate>Sat, 01 Oct 2011 23:02:50 CEST</lastBuildDate>
 
+    
+    <item>
+      <title>Handle Ruby Versions</title>
+      <link>http://emacsrookie.com/2011/10/01/handle-ruby-versions/</link>
+      <pubDate>Sat, 01 Oct 2011 00:00:00 CEST</pubDate>
+      <author>tonini.samuel@gmail.com (Samuel Tonini)</author>
+      <guid>http://emacsrookie.com/2011/10/01/handle-ruby-versions</guid>
+      <description>&lt;p&gt;&lt;a href=&quot;http://beginrescueend.com/&quot;&gt;RVM&lt;/a&gt; it&amp;rsquo;s an extremly usefull tool if you
+have to work with Ruby, different Ruby projects and specific
+Ruby Gemsets for your projects. RVM offers the solution for these
+needs by creating environments bound to a specific Ruby version and a
+set of Ruby Gems. This possibility avoids Gem version conflicts between
+your projects and also makes it easy to create test environments.&lt;/p&gt;
+
+&lt;p&gt;Now what we want is to bring this into our beloved Emacs. And here comes rvm.el
+along, an Emacs package by &lt;a href=&quot;https://github.com/senny&quot;&gt;Yves Senn&lt;/a&gt;. The rvm.el package integrates
+Emacs with RVM and gives us a few nifty functions.&lt;/p&gt;
+
+&lt;p&gt;One of the great advantages which rvm.el brings is that packages like
+&lt;code&gt;inf-ruby&lt;/code&gt; and &lt;code&gt;mode-compile&lt;/code&gt; automatically benefit from it and use the
+precise Ruby version.&lt;/p&gt;
+
+&lt;h3&gt;How to use it straightforward?&lt;/h3&gt;
+
+&lt;p&gt;First you have to install rvm.el; you get the source on
+&lt;a href=&quot;https://github.com/senny/rvm.el&quot;&gt;Github&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Then you need to put the rvm.el somewhere in your &lt;code&gt;load-path&lt;/code&gt;
+and add the following to your &lt;code&gt;~/.emacs&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scheme&quot;&gt;&lt;span class=&quot;c1&quot;&gt;;; Load rvm.el&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;rvm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;;; use rvm’s default ruby for the current Emacs session&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;rvm-use-default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+
+&lt;p&gt;Done, now you&amp;rsquo;re ready to use rvm.el.&lt;/p&gt;
+
+&lt;p&gt;The first function you want to know is &lt;code&gt;rvm-activate-corresponding-ruby&lt;/code&gt;,
+this interactive function activates the corresponding Ruby version for
+the file in the current buffer. What the function does is, to search
+for an &lt;a href=&quot;http://beginrescueend.com/workflow/rvmrc/&quot;&gt;.rvmrc&lt;/a&gt; file and activate the selected Ruby version. If there
+is no &lt;code&gt;.rvmrc&lt;/code&gt; file, the default ruby will be used instead.&lt;/p&gt;
+
+&lt;p&gt;Maybe you want to switch manually to a specific Ruby version, then you
+could use the &lt;code&gt;rvm-use&lt;/code&gt; function, which is also as an interactive
+function available.&lt;/p&gt;
+
+&lt;p&gt;If you&amp;rsquo;re working with Ruby on a daily basis and have to rummage through
+different Gem source code from time to time, then you will definitely
+need the interactive &lt;code&gt;rvm-open-gem&lt;/code&gt; function. This function gives you a
+list of all the Gems which are installed for the currently activated
+Ruby version and shows them in the minibuffer. Now you just have to decide
+which one to open.&lt;/p&gt;
+
+&lt;p&gt;In addition to that, if you have &lt;a href=&quot;/2011/09/25/workspaces/&quot;&gt;Perspective&lt;/a&gt; installed, &lt;code&gt;rvm-open-gem&lt;/code&gt; will
+open the chosen Gem directory in a new perspective, labeled with the
+Gem&amp;rsquo;s name. Now it&amp;rsquo;s easy to switch back and forth between your project and
+the Gem source.&lt;/p&gt;
+
+&lt;h3&gt;More functions&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;rvm-autodetect-ruby&lt;/code&gt; will add a &lt;code&gt;ruby-mode-hook&lt;/code&gt; which will call
+&lt;code&gt;rvm-activate-corresponding-ruby&lt;/code&gt; to detect the Ruby version.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;rvm-autodetect-ruby-stop&lt;/code&gt; is the vice-versa function, it will remove
+the &lt;code&gt;ruby-mode-hook&lt;/code&gt; which calls the &lt;code&gt;rvm-activate-corresponding-ruby&lt;/code&gt; function.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;rvm-use-default&lt;/code&gt; uses the rvm default configured Ruby as the
+current Ruby version.&lt;/p&gt;
+
+&lt;h3&gt;Some customization&lt;/h3&gt;
+
+&lt;p&gt;You can use rvm.el in your own Emacs scripts easily. Here an
+example how &lt;code&gt;rspec-mode&lt;/code&gt; uses it:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scheme&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;defcustom&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;rspec-use-rvm&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;nil&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&amp;quot;t when RVM in is in use. (Requires rvm.el)&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;:type&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;boolean&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;:group&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;rspec-mode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+
+&lt;p&gt;And in the &lt;code&gt;rspec-compile&lt;/code&gt; function it uses the
+&lt;code&gt;rvm-activate-corresponding-ruby&lt;/code&gt; before it runs the specs.&lt;/p&gt;
+
+&lt;p&gt;The following example code is simplified.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scheme&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;defun&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;rspec-compile&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;;; some code.....&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;rspec-use-rvm&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;rvm-activate-corresponding-ruby&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;;; more code ..&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+
+&lt;h3&gt;Summary&lt;/h3&gt;
+
+&lt;p&gt;Rvm.el is a great package and if you&amp;rsquo;re a Ruby programmer it
+will make your daily adventures with Ruby a lot more exciting.&lt;/p&gt;
+
+&lt;p&gt;The source code is available on the &lt;a href=&quot;https://github.com/senny/rvm.el&quot;&gt;rvm.el&lt;/a&gt; repository on Github.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Workspaces</title>
@@ -41,7 +150,7 @@ available which belong to it.&lt;/p&gt;
 &lt;a href=&quot;http://github.com/nex3/perspective-el&quot;&gt;Github&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Then you need to put the perspective.el file somewhere in your &lt;code&gt;load-path&lt;/code&gt;
-and add the following to your `~/.emacs file.&lt;/p&gt;
+and add the following to your &lt;code&gt;~/.emacs&lt;/code&gt; file.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scheme&quot;&gt;&lt;span class=&quot;c1&quot;&gt;;; Load Perspective&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;perspective&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -107,7 +216,7 @@ named perspective and open the first agenda file.&lt;/p&gt;
 &lt;/div&gt;
 
 
-&lt;p&gt;You find the whole source in the &lt;a href=&quot;&quot;&gt;emacs-configs&lt;/a&gt; repository from Yves Senn.&lt;/p&gt;
+&lt;p&gt;You find the whole source in the &lt;a href=&quot;https://github.com/senny/emacs-configs/blob/master/private/extensions/perspectives.el&quot;&gt;emacs-configs&lt;/a&gt; repository from Yves Senn.&lt;/p&gt;
 
 &lt;h3&gt;Summary&lt;/h3&gt;
 

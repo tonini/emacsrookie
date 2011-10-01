@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <meta name="description" content="">
+    <meta name="author" content="Samuel Tonini">
+
+    <link rel="stylesheet" href="/css/reset.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="/css/application.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="/css/code.css" type="text/css" media="screen, projection" />
+
+    <title>Handle Ruby Versions EmacsRookie</title>
+
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-2950562-2']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+  </head>
+  <body>
+    <div id="container">
+      <nav id="main_nav">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+        </ul>
+      </nav>
+
+      <header id="topbar">
+        <a href="/"><h1>emacs<span class="emacs">rookie</span></h1></a>
+        <h2>Hints about the powerful emacs text editor</h2>
+      </header>
+
+      <div id="main" role="main">
+        
+
+<article class="post">
+  <header>
+    <h2><span class="hint">Hint #3</span>October  1, 2011</h2>
+    <h1>Handle Ruby Versions</h1>
+  </header>
+  <p><a href="http://beginrescueend.com/">RVM</a> it&rsquo;s an extremly usefull tool if you
+have to work with Ruby, different Ruby projects and specific
+Ruby Gemsets for your projects. RVM offers the solution for these
+needs by creating environments bound to a specific Ruby version and a
+set of Ruby Gems. This possibility avoids Gem version conflicts between
+your projects and also makes it easy to create test environments.</p>
+
+<p>Now what we want is to bring this into our beloved Emacs. And here comes rvm.el
+along, an Emacs package by <a href="https://github.com/senny">Yves Senn</a>. The rvm.el package integrates
+Emacs with RVM and gives us a few nifty functions.</p>
+
+<p>One of the great advantages which rvm.el brings is that packages like
+<code>inf-ruby</code> and <code>mode-compile</code> automatically benefit from it and use the
+precise Ruby version.</p>
+
+<h3>How to use it straightforward?</h3>
+
+<p>First you have to install rvm.el; you get the source on
+<a href="https://github.com/senny/rvm.el">Github</a>.</p>
+
+<p>Then you need to put the rvm.el somewhere in your <code>load-path</code>
+and add the following to your <code>~/.emacs</code> file.</p>
+
+<div class="highlight"><pre><code class="scheme"><span class="c1">;; Load rvm.el</span>
+<span class="p">(</span><span class="nf">require</span> <span class="ss">&#39;rvm</span><span class="p">)</span>
+<span class="c1">;; use rvm’s default ruby for the current Emacs session</span>
+<span class="p">(</span><span class="nf">rvm-use-default</span><span class="p">)</span>
+</code></pre>
+</div>
+
+
+<p>Done, now you&rsquo;re ready to use rvm.el.</p>
+
+<p>The first function you want to know is <code>rvm-activate-corresponding-ruby</code>,
+this interactive function activates the corresponding Ruby version for
+the file in the current buffer. What the function does is, to search
+for an <a href="http://beginrescueend.com/workflow/rvmrc/">.rvmrc</a> file and activate the selected Ruby version. If there
+is no <code>.rvmrc</code> file, the default ruby will be used instead.</p>
+
+<p>Maybe you want to switch manually to a specific Ruby version, then you
+could use the <code>rvm-use</code> function, which is also as an interactive
+function available.</p>
+
+<p>If you&rsquo;re working with Ruby on a daily basis and have to rummage through
+different Gem source code from time to time, then you will definitely
+need the interactive <code>rvm-open-gem</code> function. This function gives you a
+list of all the Gems which are installed for the currently activated
+Ruby version and shows them in the minibuffer. Now you just have to decide
+which one to open.</p>
+
+<p>In addition to that, if you have <a href="/2011/09/25/workspaces/">Perspective</a> installed, <code>rvm-open-gem</code> will
+open the chosen Gem directory in a new perspective, labeled with the
+Gem&rsquo;s name. Now it&rsquo;s easy to switch back and forth between your project and
+the Gem source.</p>
+
+<h3>More functions</h3>
+
+<p><code>rvm-autodetect-ruby</code> will add a <code>ruby-mode-hook</code> which will call
+<code>rvm-activate-corresponding-ruby</code> to detect the Ruby version.</p>
+
+<p><code>rvm-autodetect-ruby-stop</code> is the vice-versa function, it will remove
+the <code>ruby-mode-hook</code> which calls the <code>rvm-activate-corresponding-ruby</code> function.</p>
+
+<p><code>rvm-use-default</code> uses the rvm default configured Ruby as the
+current Ruby version.</p>
+
+<h3>Some customization</h3>
+
+<p>You can use rvm.el in your own Emacs scripts easily. Here an
+example how <code>rspec-mode</code> uses it:</p>
+
+<div class="highlight"><pre><code class="scheme"><span class="p">(</span><span class="nf">defcustom</span> <span class="nv">rspec-use-rvm</span> <span class="nv">nil</span>
+  <span class="s">&quot;t when RVM in is in use. (Requires rvm.el)&quot;</span>
+  <span class="nv">:type</span> <span class="ss">&#39;boolean</span>
+  <span class="nv">:group</span> <span class="ss">&#39;rspec-mode</span><span class="p">)</span>
+</code></pre>
+</div>
+
+
+<p>And in the <code>rspec-compile</code> function it uses the
+<code>rvm-activate-corresponding-ruby</code> before it runs the specs.</p>
+
+<p>The following example code is simplified.</p>
+
+<div class="highlight"><pre><code class="scheme"><span class="p">(</span><span class="nf">defun</span> <span class="nv">rspec-compile</span> <span class="p">()</span>
+  <span class="c1">;; some code.....</span>
+  <span class="p">(</span><span class="k">if </span><span class="nv">rspec-use-rvm</span>
+      <span class="p">(</span><span class="nf">rvm-activate-corresponding-ruby</span><span class="p">))</span>
+  <span class="c1">;; more code ..</span>
+  <span class="p">)</span>
+</code></pre>
+</div>
+
+
+<h3>Summary</h3>
+
+<p>Rvm.el is a great package and if you&rsquo;re a Ruby programmer it
+will make your daily adventures with Ruby a lot more exciting.</p>
+
+<p>The source code is available on the <a href="https://github.com/senny/rvm.el">rvm.el</a> repository on Github.</p>
+
+  <div id="social_buttons">
+    <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="emacsrookie" data-lang="en">Tweet</a>
+    <g:plusone size="medium"></g:plusone>
+  </div>
+
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'emacsrookie';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</article>
+
+
+      </div>
+
+      <footer id="copyright">
+        <p>&copy; 2011 emacsrookie.com, All Rights Reserved.</p>
+        <p class="rss">
+          <a href ="http://feeds.feedburner.com/emacsrookiecom">
+            <img src="/images/feed-16x16.png" alt="RSS Feed">
+          </a>
+        </p>
+      </footer>
+    </div>
+    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+    <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-2950562-2']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+  </body>
+</html>
