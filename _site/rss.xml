@@ -10,8 +10,8 @@
     <atom:link href="http://emacsrookie.com/rss.xml" rel="self" type="application/rss+xml" />
     <description>Hints about the powerful emacs text editor</description>
     <language>en-us</language>
-    <pubDate>Mon, 10 Oct 2011 09:12:31 CEST</pubDate>
-    <lastBuildDate>Mon, 10 Oct 2011 09:12:31 CEST</lastBuildDate>
+    <pubDate>Mon, 10 Oct 2011 14:35:30 CEST</pubDate>
+    <lastBuildDate>Mon, 10 Oct 2011 14:35:30 CEST</lastBuildDate>
 
     
     <item>
@@ -84,7 +84,7 @@ the &lt;code&gt;dired-maybe-insert-subdir&lt;/code&gt; function, Dired takes the
 on the current line and lists the content of the directory below
 the parent directory in the current Dired buffer.&lt;/p&gt;
 
-&lt;p&gt;Let&amp;rsquo;s see what this looks like:&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s see how this looks like:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text&quot;&gt;  /Users/samuel/Projects/basement:
   total used in directory 48 available 151364824
@@ -109,7 +109,7 @@ the parent directory in the current Dired buffer.&lt;/p&gt;
 &lt;/div&gt;
 
 
-&lt;p&gt;You see, the parent directory is on top and the subdirectory you jumped
+&lt;p&gt;You see, the parent directory is on top and the sub directory you jumped
 to is listed below. It&amp;rsquo;s an easy and great overview. At this point
 Dired gives you a few functions to move between the
 directories. &lt;code&gt;dired-prev-subdir&lt;/code&gt; to move up in the directory tree and the
@@ -174,12 +174,12 @@ options for &lt;code&gt;ls&lt;/code&gt;.&lt;/p&gt;
     &lt;tr&gt;
         &lt;td&gt;&lt;span class=&quot;code&quot;&gt;dired-next-subdir&lt;/span&gt;&lt;/td&gt;
         &lt;td&gt;&lt;span class=&quot;code&quot;&gt;C-M-n&lt;/span&gt;&lt;/td&gt;
-        &lt;td&gt;Jumps to the next subdirectory.&lt;/td&gt;
+        &lt;td&gt;Jumps to the next sub directory.&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
         &lt;td&gt;&lt;span class=&quot;code&quot;&gt;dired-prev-subdir&lt;/span&gt;&lt;/td&gt;
         &lt;td&gt;&lt;span class=&quot;code&quot;&gt;C-M-p&lt;/span&gt;&lt;/td&gt;
-        &lt;td&gt;Jumps to the previus subdirectory.&lt;/td&gt;
+        &lt;td&gt;Jumps to the previous sub directory.&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
         &lt;td&gt;&lt;span class=&quot;code&quot;&gt;dired-prev-subdir&lt;/span&gt;&lt;/td&gt;
@@ -189,7 +189,7 @@ options for &lt;code&gt;ls&lt;/code&gt;.&lt;/p&gt;
     &lt;tr&gt;
         &lt;td&gt;&lt;span class=&quot;code&quot;&gt;dired-maybe-insert-subdir&lt;/span&gt;&lt;/td&gt;
         &lt;td&gt;&lt;span class=&quot;code&quot;&gt;i&lt;/span&gt;&lt;/td&gt;
-        &lt;td&gt;Opens the content of the that directory in current Dired buffer.&lt;/td&gt;
+        &lt;td&gt;Opens the content of the directory on the current line in the Dired buffer.&lt;/td&gt;
     &lt;/tr&gt;
 &lt;/table&gt;
 

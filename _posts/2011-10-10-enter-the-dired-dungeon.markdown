@@ -67,7 +67,7 @@ the `dired-maybe-insert-subdir` function, Dired takes the directory
 on the current line and lists the content of the directory below
 the parent directory in the current Dired buffer.
 
-Let's see what this looks like:
+Let's see how this looks like:
 
 {% highlight text %}
   /Users/samuel/Projects/basement:
@@ -91,7 +91,7 @@ Let's see what this looks like:
   -rw-r--r--   1 samuel  staff   75 24 Aug 15:55 basement.rb
 {% endhighlight %}
 
-You see, the parent directory is on top and the subdirectory you jumped
+You see, the parent directory is on top and the sub directory you jumped
 to is listed below. It's an easy and great overview. At this point
 Dired gives you a few functions to move between the
 directories. `dired-prev-subdir` to move up in the directory tree and the
@@ -155,12 +155,12 @@ options for `ls`.
     <tr>
         <td><span class="code">dired-next-subdir</span></td>
         <td><span class="code">C-M-n</span></td>
-        <td>Jumps to the next subdirectory.</td>
+        <td>Jumps to the next sub directory.</td>
     </tr>
     <tr>
         <td><span class="code">dired-prev-subdir</span></td>
         <td><span class="code">C-M-p</span></td>
-        <td>Jumps to the previus subdirectory.</td>
+        <td>Jumps to the previous sub directory.</td>
     </tr>
     <tr>
         <td><span class="code">dired-prev-subdir</span></td>
@@ -170,7 +170,7 @@ options for `ls`.
     <tr>
         <td><span class="code">dired-maybe-insert-subdir</span></td>
         <td><span class="code">i</span></td>
-        <td>Opens the content of the that directory in current Dired buffer.</td>
+        <td>Opens the content of the directory on the current line in the Dired buffer.</td>
     </tr>
 </table>
 
