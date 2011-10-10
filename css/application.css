@@ -205,19 +205,37 @@ body {
   margin: 15px 0 0 0;
 }
 
-.function-list th.functions {
-  width: 145px;
-}
-
 .function-list th {
-  width: 80px;
   font-weight: bold;
   text-align: left;
-  padding-bottom: 10px;
+  padding: 0 5px 10px 5px;
+  border-bottom: 1px dotted #333;
+  border-right: 1px dotted #333;
 }
 
 .function-list td {
-  padding: 4px 0;
+  padding: 4px 4px;
+  border-right: 1px dotted #ddd;
+  border-bottom: 1px dotted #ddd;
+  min-width: 130px;
+}
+
+.function-list td:last-child {
+  border-right: none;
+}
+
+.function-list th:last-child {
+  border-right: none;
+}
+
+.function-list .functions {
+  width: 230px;
+}
+
+.function-list td {
+  padding: 4px 4px;
+  border-right: 1px dotted #ddd;
+  border-bottom: 1px dotted #ddd;
 }
 
 .function-list span.code {
