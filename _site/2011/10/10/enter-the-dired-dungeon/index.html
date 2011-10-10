@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <meta name="description" content="">
+    <meta name="author" content="Samuel Tonini">
+
+    <link rel="stylesheet" href="/css/reset.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="/css/application.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="/css/code.css" type="text/css" media="screen, projection" />
+
+    <title>Enter The Dired Dungeon EmacsRookie</title>
+
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-2950562-2']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+  </head>
+  <body>
+    <div id="container">
+      <nav id="main_nav">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+        </ul>
+      </nav>
+
+      <header id="topbar">
+        <a href="/"><h1>emacs<span class="emacs">rookie</span></h1></a>
+        <h2>Hints about the powerful emacs text editor</h2>
+      </header>
+
+      <div id="main" role="main">
+        
+
+<article class="post">
+  <header>
+    <h2><span class="hint">Hint #4</span>October 10, 2011</h2>
+    <h1>Enter The Dired Dungeon</h1>
+  </header>
+  <p>Often when I talk with people about Emacs, they mostly complain about
+the missing project navigator.</p>
+
+<p>Dired have a lot to offer that doesn&rsquo;t suite in just one article, so
+I decide to split it in several parts. I start with showing the
+navigation abilities of Dired.</p>
+
+<p>Through the article I won&rsquo;t refer to keybindings but instead to the
+function names. At the end there will be a list of the functions
+inclusive the corresponding default keybindings.</p>
+
+<h3>How to use it straightforward?</h3>
+
+<p>Dired is built in Emacs, so you don&rsquo;t have to install anything.</p>
+
+<p>Enter Dired with use the function <code>dired</code>. Now it&rsquo;s opening the
+minibuffer and prompts you to choose a directory to open.</p>
+
+<p>Example of a open Dired buffer:</p>
+
+<div class="highlight"><pre><code class="text">  /Users/samuel/Projects/basement:
+  total used in directory 48 available 151364824
+  drwxr-xr-x  10 samuel  staff   340 24 Aug 16:16 .
+  drwxr-xr-x  37 samuel  staff  1258  5 Okt 13:54 ..
+  drwxr-xr-x  12 samuel  staff   408  5 Okt 22:29 .git
+  -rw-r--r--   1 samuel  staff    33 24 Aug 15:55 .gitignore
+  -rw-r--r--   1 samuel  staff    92 24 Aug 15:55 Gemfile
+  -rw-r--r--   1 samuel  staff   194 24 Aug 16:16 Gemfile.lock
+  -rw-r--r--   1 samuel  staff    71 24 Aug 15:57 README.markdown
+  -rw-r--r--   1 samuel  staff    28 24 Aug 15:55 Rakefile
+  -rw-r--r--   1 samuel  staff   757 24 Aug 16:04 basement.gemspec
+  drwxr-xr-x   4 samuel  staff   136 24 Aug 15:55 lib
+</code></pre>
+</div>
+
+
+<p>At this point an explanation about how Dired works. Dired creates a
+ready only buffer and listing all the files from you&rsquo;re choosen
+directory.</p>
+
+<p>In the Dired buffer you able to move around with the usual
+movements. Just the <code>next-line</code> and <code>previous-line</code> functions are
+redefined. Generally when you use this functions, the cursor will be
+positioned at the beginning of the line, but in the Dired buffer it
+goes to the beginning of the file name.</p>
+
+<p>Next what you want to know is the <code>dired-goto-file</code> functions, which
+prompts for a filename in the minibuffer. It moves the cursor in the
+Dired buffer to the file you choosed. Mostly you want to visit the
+file of the current line, then you using <code>dired-find-file</code> which
+opens the file straight without prompting for filename input.</p>
+
+<p>Maybe you&rsquo;re asking you&rsquo;re self now, but whats about
+subdirectories? You have seen how easily it is to navigate in a single
+directory and visit specific files, maybe you found out that when you
+use <code>dired-goto-file</code> on a subdirectory it will list the files from
+this directory. But you want a solution with a better overview,
+something that gives you the parent and the subdirectory at once.
+So let&rsquo;s check out what Dired having for use.</p>
+
+<p>As you know, Dired just displays one directory at the time. But with
+the <code>dired-maybe-insert-subdir</code> function, Dired takes the directory
+on the current line and listing the content of the directory below
+the parent directory in the current Dired buffer.</p>
+
+<p>Let&rsquo;s see how this looks like:</p>
+
+<div class="highlight"><pre><code class="text">  /Users/samuel/Projects/basement:
+  total used in directory 48 available 151364824
+  drwxr-xr-x  10 samuel  staff   340 24 Aug 16:16 .
+  drwxr-xr-x  37 samuel  staff  1258  5 Okt 13:54 ..
+  drwxr-xr-x  12 samuel  staff   408  5 Okt 22:29 .git
+  -rw-r--r--   1 samuel  staff    33 24 Aug 15:55 .gitignore
+  -rw-r--r--   1 samuel  staff    92 24 Aug 15:55 Gemfile
+  -rw-r--r--   1 samuel  staff   194 24 Aug 16:16 Gemfile.lock
+  -rw-r--r--   1 samuel  staff    71 24 Aug 15:57 README.markdown
+  -rw-r--r--   1 samuel  staff    28 24 Aug 15:55 Rakefile
+  -rw-r--r--   1 samuel  staff   757 24 Aug 16:04 basement.gemspec
+  drwxr-xr-x   4 samuel  staff   136 24 Aug 15:55 lib
+
+  /Users/samuel/Projects/basement/lib:
+  total used in directory 8 available 151364824
+  drwxr-xr-x   4 samuel  staff  136 24 Aug 15:55 .
+  drwxr-xr-x  10 samuel  staff  340 24 Aug 16:16 ..
+  drwxr-xr-x   3 samuel  staff  102 24 Aug 15:55 basement
+  -rw-r--r--   1 samuel  staff   75 24 Aug 15:55 basement.rb
+</code></pre>
+</div>
+
+
+<p>You see, the parent directory is on top and the subdirectory you jumped
+too is listet below. It&rsquo;s an easy and great overview. At this point
+Dired gives you a few functions to move between the
+directories. <code>dired-prev-subdir</code> to move up in the directory tree and the
+vice-versa function <code>dired-next-subdir</code>. What I find usefull too, it&rsquo;s
+the function <code>dired-up-directory</code> which runs Dired in the parent
+directory. It looks in the current buffer for the parent directory or
+in another buffer, or creates a new one if needed.</p>
+
+<h3>Some customization</h3>
+
+<p>The variable <code>dired-listing-switches</code> contains the options which are
+used when <code>ls</code> is called. That means you could define how the command
+<code>ls</code> should be called when you open a new directory into Dired.</p>
+
+<p>Example:</p>
+
+<div class="highlight"><pre><code class="scheme"><span class="p">(</span><span class="nf">setq</span> <span class="nv">dired-listing-switches</span> <span class="s">&quot;-lRS&quot;</span><span class="p">)</span>
+</code></pre>
+</div>
+
+
+<p>The <code>-</code> in the <code>dired-listing-switches</code> variable is a must, or Dired
+wont work. I also recommend to add the <code>l</code> option to the variable as
+by default, or just the single files and directory names would be
+showed in the list. Just fire up the <code>ls</code> man page if you want to see
+all available options for <code>ls</code>.</p>
+
+<h3>Functions and default keybindings</h3>
+
+<table class="function-list">
+    <tr>
+        <th class="functions">Function</th>
+        <th>Keybinding</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td><span class="code">dired</span></td>
+        <td><span class="code">C-x d</span></td>
+        <td>Enter Dired.</td>
+    </tr>
+    <tr>
+        <td><span class="code">dired-next-line</span></td>
+        <td><span class="code">C-n / SPC / n</span></td>
+        <td>Move to the next line.</td>
+    </tr>
+    <tr>
+        <td><span class="code">dired-previous-line</span></td>
+        <td><span class="code">C-p / p / DEL</span></td>
+        <td>Move to the previous line. (<span class="code">DEL</span> also unflags.)</td>
+    </tr>
+    <tr>
+        <td><span class="code">dired-goto-file</span></td>
+        <td><span class="code">j</span></td>
+        <td>Prompts for a filename and moves cursor to choosen file in
+    the Dired buffer.</td>
+    </tr>
+    <tr>
+        <td><span class="code">dired-find-file</span></td>
+        <td><span class="code">f / e / RET</span></td>
+        <td>Open the file on the current line.</td>
+    </tr>
+    <tr>
+        <td><span class="code">dired-next-subdir</span></td>
+        <td><span class="code">C-M-n</span></td>
+        <td>Jumps to the next subdirectory.</td>
+    </tr>
+    <tr>
+        <td><span class="code">dired-prev-subdir</span></td>
+        <td><span class="code">C-M-p</span></td>
+        <td>Jumps to the previus subdirectory.</td>
+    </tr>
+    <tr>
+        <td><span class="code">dired-prev-subdir</span></td>
+        <td><span class="code">^</span></td>
+        <td>Run Dired on parent directory of current directory.</td>
+    </tr>
+    <tr>
+        <td><span class="code">dired-maybe-insert-subdir</span></td>
+        <td><span class="code">i</span></td>
+        <td>Opens the content of the that directory in current Dired buffer.</td>
+    </tr>
+</table>
+
+
+<h3>Summary</h3>
+
+<p>Dired have everything you need to navigate through your daily projects
+and a lot more. I just scratched the surface and recommend the
+official <a href="http://www.gnu.org/s/libtool/manual/emacs/Dired.html#Dired">Emacs Dired manual</a>
+for further informations.</p>
+
+  <div id="social_buttons">
+    <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="emacsrookie" data-lang="en">Tweet</a>
+    <g:plusone size="medium"></g:plusone>
+  </div>
+
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'emacsrookie';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</article>
+
+
+      </div>
+
+      <footer id="copyright">
+        <p>&copy; 2011 emacsrookie.com, All Rights Reserved.</p>
+        <p class="rss">
+          <a href ="http://feeds.feedburner.com/emacsrookiecom">
+            <img src="/images/feed-16x16.png" alt="RSS Feed">
+          </a>
+        </p>
+      </footer>
+    </div>
+    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+    <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-2950562-2']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+  </body>
+</html>
