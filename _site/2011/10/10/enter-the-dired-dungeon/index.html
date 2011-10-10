@@ -48,25 +48,24 @@
     <h2><span class="hint">Hint #4</span>October 10, 2011</h2>
     <h1>Enter The Dired Dungeon</h1>
   </header>
-  <p>Often when I talk with people about Emacs, they mostly complain about
+  <p>When I talk with people about Emacs, they often complain about
 the missing project navigator.</p>
 
-<p>Dired have a lot to offer that doesn&rsquo;t suite in just one article, so
-I decide to split it in several parts. I start with showing the
+<p>Dired has a lot to offer that doesn&rsquo;t fit in just one article, so
+I decided to split it into several parts. I start by showing the
 navigation abilities of Dired.</p>
 
-<p>Through the article I won&rsquo;t refer to keybindings but instead to the
+<p>Throughout the article I won&rsquo;t refer to keybindings but instead to the
 function names. At the end there will be a list of the functions
-inclusive the corresponding default keybindings.</p>
+including the corresponding default keybindings.</p>
 
 <h3>How to use it straightforward?</h3>
 
-<p>Dired is built in Emacs, so you don&rsquo;t have to install anything.</p>
+<p>Dired is built into Emacs, so you don&rsquo;t have to install anything.</p>
 
-<p>Enter Dired with use the function <code>dired</code>. Now it&rsquo;s opening the
-minibuffer and prompts you to choose a directory to open.</p>
+<p>Enter Dired by calling the function <code>dired</code>. The minibuffer opens and prompts you to choose a directory to open.</p>
 
-<p>Example of a open Dired buffer:</p>
+<p>Example of an open Dired buffer:</p>
 
 <div class="highlight"><pre><code class="text">  /Users/samuel/Projects/basement:
   total used in directory 48 available 151364824
@@ -84,36 +83,36 @@ minibuffer and prompts you to choose a directory to open.</p>
 </div>
 
 
-<p>At this point an explanation about how Dired works. Dired creates a
-ready only buffer and listing all the files from you&rsquo;re choosen
-directory.</p>
+<p>Dired creates a read-only buffer and lists all the files
+from your chosen directory.</p>
 
-<p>In the Dired buffer you able to move around with the usual
-movements. Just the <code>next-line</code> and <code>previous-line</code> functions are
-redefined. Generally when you use this functions, the cursor will be
+<p>In the Dired buffer you&rsquo;re able to move around with the usual
+movement functions. Only the <code>next-line</code> and <code>previous-line</code> functions are
+redefined. Generally when you use these functions, the cursor will be
 positioned at the beginning of the line, but in the Dired buffer it
 goes to the beginning of the file name.</p>
 
-<p>Next what you want to know is the <code>dired-goto-file</code> functions, which
-prompts for a filename in the minibuffer. It moves the cursor in the
-Dired buffer to the file you choosed. Mostly you want to visit the
-file of the current line, then you using <code>dired-find-file</code> which
-opens the file straight without prompting for filename input.</p>
+<p>Next what you want to know is the <code>dired-goto-file</code> function, which
+prompts for a file name in the minibuffer. It moves the cursor in the
+Dired buffer to the file you&rsquo;ve chosen. Most of the time, you want to
+visit the file of the currently selected line. In this case you use
+<code>dired-find-file</code> which opens the file straight away without prompting
+for a file name input.</p>
 
-<p>Maybe you&rsquo;re asking you&rsquo;re self now, but whats about
-subdirectories? You have seen how easily it is to navigate in a single
+<p>Maybe you&rsquo;re asking yourself now, but what about
+sub directories? You have seen how easy it is to navigate in a single
 directory and visit specific files, maybe you found out that when you
-use <code>dired-goto-file</code> on a subdirectory it will list the files from
+use <code>dired-goto-file</code> on a sub directory it will list the files from
 this directory. But you want a solution with a better overview,
-something that gives you the parent and the subdirectory at once.
-So let&rsquo;s check out what Dired having for use.</p>
+something that gives you the parent and the sub directory at one glance.
+So lets check out what Dired has in store for that scenario.</p>
 
 <p>As you know, Dired just displays one directory at the time. But with
 the <code>dired-maybe-insert-subdir</code> function, Dired takes the directory
-on the current line and listing the content of the directory below
+on the current line and lists the content of the directory below
 the parent directory in the current Dired buffer.</p>
 
-<p>Let&rsquo;s see how this looks like:</p>
+<p>Let&rsquo;s see what this looks like:</p>
 
 <div class="highlight"><pre><code class="text">  /Users/samuel/Projects/basement:
   total used in directory 48 available 151364824
@@ -139,19 +138,19 @@ the parent directory in the current Dired buffer.</p>
 
 
 <p>You see, the parent directory is on top and the subdirectory you jumped
-too is listet below. It&rsquo;s an easy and great overview. At this point
+to is listed below. It&rsquo;s an easy and great overview. At this point
 Dired gives you a few functions to move between the
 directories. <code>dired-prev-subdir</code> to move up in the directory tree and the
-vice-versa function <code>dired-next-subdir</code>. What I find usefull too, it&rsquo;s
+vice-versa function <code>dired-next-subdir</code>. Also useful is
 the function <code>dired-up-directory</code> which runs Dired in the parent
-directory. It looks in the current buffer for the parent directory or
+directory. It searches in the current buffer for the parent directory or
 in another buffer, or creates a new one if needed.</p>
 
 <h3>Some customization</h3>
 
 <p>The variable <code>dired-listing-switches</code> contains the options which are
 used when <code>ls</code> is called. That means you could define how the command
-<code>ls</code> should be called when you open a new directory into Dired.</p>
+<code>ls</code> should be called when you open a new directory in Dired.</p>
 
 <p>Example:</p>
 
@@ -160,11 +159,11 @@ used when <code>ls</code> is called. That means you could define how the command
 </div>
 
 
-<p>The <code>-</code> in the <code>dired-listing-switches</code> variable is a must, or Dired
-wont work. I also recommend to add the <code>l</code> option to the variable as
-by default, or just the single files and directory names would be
-showed in the list. Just fire up the <code>ls</code> man page if you want to see
-all available options for <code>ls</code>.</p>
+<p>The <code>-</code> in the <code>dired-listing-switches</code> variable is a must or Dired
+wont work. I also recommend to add the <code>l</code> option to the variable, as
+by default just the single file and directory names would be listed.
+Just fire up the <code>ls</code> man page if you want to see all available
+options for <code>ls</code>.</p>
 
 <h3>Functions and default keybindings</h3>
 
@@ -225,10 +224,10 @@ all available options for <code>ls</code>.</p>
 
 <h3>Summary</h3>
 
-<p>Dired have everything you need to navigate through your daily projects
+<p>Dired has everything you need to navigate through your daily projects
 and a lot more. I just scratched the surface and recommend the
 official <a href="http://www.gnu.org/s/libtool/manual/emacs/Dired.html#Dired">Emacs Dired manual</a>
-for further informations.</p>
+for further information.</p>
 
   <div id="social_buttons">
     <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="emacsrookie" data-lang="en">Tweet</a>
