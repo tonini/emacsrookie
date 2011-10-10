@@ -200,3 +200,29 @@ body {
 .dsq-brlink {
   display: none;
 }
+
+.function-list {
+  margin: 15px 0 0 0;
+}
+
+.function-list th.functions {
+  width: 145px;
+}
+
+.function-list th {
+  width: 80px;
+  font-weight: bold;
+  text-align: left;
+  padding-bottom: 10px;
+}
+
+.function-list td {
+  padding: 4px 0;
+}
+
+.function-list span.code {
+  font-family: monospace;
+  background: rgba(128, 139, 93, .25);
+  color: rgba(0, 0, 0, 0.75);
+  padding: 1px 3px;
+}
