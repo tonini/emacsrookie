@@ -1,6 +1,6 @@
 ---
 tite: Enter the Dired dungeon
-summary: Emacs comes with a very powerful tool called Dired, which it's way more than just an directory navigator.
+summary: Emacs comes with a very powerful tool called Dired, which it's way more than just a directory navigator.
 hint: 4
 layout: post
 ---
