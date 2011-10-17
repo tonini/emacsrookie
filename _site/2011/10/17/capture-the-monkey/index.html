@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <meta name="description" content="">
+    <meta name="author" content="Samuel Tonini">
+
+    <link rel="stylesheet" href="/css/reset.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="/css/application.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="/css/code.css" type="text/css" media="screen, projection" />
+
+    <title>Capture the monkey EmacsRookie</title>
+
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-2950562-2']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+  </head>
+  <body>
+    <div id="container">
+      <nav id="main_nav">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+        </ul>
+      </nav>
+
+      <header id="topbar">
+        <a href="/"><h1>emacs<span class="emacs">rookie</span></h1></a>
+        <h2>Hints about the powerful emacs text editor</h2>
+      </header>
+
+      <div id="main" role="main">
+        
+
+<article class="post">
+  <header>
+    <h2><span class="hint">Hint #5</span>October 17, 2011</h2>
+    <h1>Capture the monkey</h1>
+  </header>
+  <p>The first Emacsrookie article was about
+<a href="http://emacsrookie.com/2011/09/13/do-you-remember/">Remember</a>, an
+Emacs built in package to create new tasks on the fly. There I
+promised to write a new article about how to do the same in a more
+recent way, with Capture.</p>
+
+<p>I will show now how to use Capture, the way how
+<a href="http://orgmode.org/">Org Mode</a> handles capturing new tasks on the
+fly. Capture is highly inspired by the Remember package and I
+recommend to switch to it if you still use Remember.</p>
+
+<p>But why it&rsquo;s so great? It&rsquo;s really easy to use, it&rsquo;s built in Org Mode
+and it brings powerful abilities to create and customize new task
+templates.</p>
+
+<p>Let&rsquo;s check it out!</p>
+
+<h3>How to use it straightforward?</h3>
+
+<p>Org Mode ships in with Emacs. But if you like to get a more recent
+version of Org Mode, please check the
+<a href="http://orgmode.org/manual/Installation.html#Installation">install</a>
+section in the Org Mode manual.</p>
+
+<p>To create your first task, you have to define a default file in
+which the task should be added.</p>
+
+<p>Just leave the path to the file in the following variable:</p>
+
+<div class="highlight"><pre><code class="scheme"><span class="p">(</span><span class="nf">setq</span> <span class="nv">org-default-notes-file</span> <span class="p">(</span><span class="nf">concat</span> <span class="nv">org-directory</span> <span class="s">&quot;/tasks.org&quot;</span><span class="p">))</span>
+</code></pre>
+</div>
+
+
+<p>Done, now you&rsquo;re ready to go!</p>
+
+<p>Org Mode gives you the function <code>org-capture</code> to open the <code>*Org
+select*</code> buffer. At first, you just have three points to choose from,
+create a new task item, open customize (for create new Capture
+templates) or quit the buffer.</p>
+
+<p>You should create a new task item at the outset, to get a feeling how
+it works. You shouldn&rsquo;t have any problems to create a task, it&rsquo;s very
+self-explinatory.</p>
+
+<p>Maybe at this point you ask yourself what&rsquo;s about this Capture
+template stuff you read about in the <code>*Org select*</code> buffer.</p>
+
+<p>Let&rsquo;s see what this template stuff is all about.</p>
+
+<h3>Templates</h3>
+
+<p>Capture gives you the ability to create your own templates for new
+task items. You just have to define a list for each of your templates
+and assign them to the <code>org-capture-templates</code> variable.</p>
+
+<div class="highlight"><pre><code class="scheme"><span class="p">(</span><span class="nf">setq</span> <span class="nv">org-capture-templates</span>
+      <span class="o">&#39;</span><span class="p">((</span><span class="s">&quot;t&quot;</span> <span class="s">&quot;Todo&quot;</span> <span class="nv">entry</span> <span class="p">(</span><span class="nf">file+headline</span> <span class="s">&quot;~/org/tasks.org&quot;</span> <span class="s">&quot;Tasks&quot;</span><span class="p">)</span>
+             <span class="s">&quot;* TODO %?\n  %t&quot;</span><span class="p">)))</span>
+</code></pre>
+</div>
+
+
+<p>Ok, let&rsquo;s see what kind of a template we have defined. When you create
+a template, you need to set the following items in the list:</p>
+
+<table class="function-list">
+    <tr>
+        <th class="functions">Item value</th>
+        <th>Description</th>
+    </tr>
+
+    <tr>
+        <td><span class="item">keys</span></td>
+        <td>A string which is used as a key for the template selection.</td>
+    </tr>
+
+    <tr>
+        <td><span class="item">description</span></td>
+        <td>The description of the template.</td>
+    </tr>
+
+    <tr>
+        <td><span class="item">type</span></td>
+        <td>The type of a new item.</td>
+    </tr>
+
+    <tr>
+        <td><span class="item">target</span></td>
+        <td>The specification where the new item should
+        be placed.</td>
+    </tr>
+
+    <tr>
+        <td><span class="item">template</span></td>
+        <td>The template for creating the capture item.</td>
+    </tr>
+
+    <tr>
+        <td><span class="item">properties</span></td>
+        <td>Additional properties.</td>
+    </tr>
+</table>
+
+
+<p>Check the <a href="http://orgmode.org/manual/Template-elements.html#Template-elements">manuel</a> for detailed information.</p>
+
+<p>Capture has some nice <a href="http://orgmode.org/manual/Template-expansion.html#Template-expansion">template expansion</a> and you should read through
+the list.</p>
+
+<p>In the above template definition I just used <code>%?</code> and <code>%t</code>. I mostly
+use them because I&rsquo;m not a fancy boy. <code>%?</code> means that after completing
+the template, the cursor will be positioned there. And the <code>%t</code> is a
+simple date only timestamp which I use because I want that my new
+<code>TODO</code> item will be shown up in the agenda view of Org Mode.</p>
+
+<p>Let&rsquo;s define a new keybinding to your new Capture template, so you
+don’t have to go through the selecting process when you want to create a new
+task item:</p>
+
+<div class="highlight"><pre><code class="scheme"><span class="p">(</span><span class="nf">define-key</span> <span class="nv">global-map</span> <span class="s">&quot;C-c t&quot;</span>
+  <span class="p">(</span><span class="k">lambda </span><span class="p">()</span> <span class="p">(</span><span class="nf">interactive</span><span class="p">)</span> <span class="p">(</span><span class="nf">org-capture</span> <span class="nv">nil</span> <span class="s">&quot;t&quot;</span><span class="p">)))</span>
+</code></pre>
+</div>
+
+
+<p>So now you could create a new task item with <code>C-c t</code> without going
+trough the template selection.</p>
+
+<h3>Some customization</h3>
+
+<p>I use Org Mode for a lot of things, also these article are written in Org
+mode. I manage also all my project with it, and because I have to
+switch between them through the day, I have written some code to
+create new items for a specific project on the fly.</p>
+
+<p>First a variable which holds the path to the projects org files:</p>
+
+<div class="highlight"><pre><code class="scheme"><span class="p">(</span><span class="nf">defvar</span> <span class="nv">custom--org-project-file-path</span>
+  <span class="s">&quot;~/org/projects/&quot;</span><span class="p">)</span>
+</code></pre>
+</div>
+
+
+<p>Second I defined a method who returns all the files which are in the
+org projects path:</p>
+
+<div class="highlight"><pre><code class="scheme"><span class="p">(</span><span class="nf">defun</span> <span class="nv">custom-org-project-files</span>
+  <span class="p">(</span><span class="nf">directory-files</span> <span class="nv">custom--org-project-file-path</span> <span class="nv">nil</span> <span class="s">&quot;\\.org$&quot;</span><span class="p">))</span>
+</code></pre>
+</div>
+
+
+<p>Then I created a method which prompts for one of my project org files
+and I used the <code>completing-read</code> function to get a nice file
+completing on my org project files:</p>
+
+<div class="highlight"><pre><code class="scheme"><span class="p">(</span><span class="nf">defun</span> <span class="nv">custom-org-project-chooser</span> <span class="p">()</span>
+  <span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">completing-read-func</span> <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nf">null</span> <span class="nv">ido-mode</span><span class="p">)</span>
+                                  <span class="ss">&#39;completing-read</span>
+                                <span class="ss">&#39;ido-completing-read</span><span class="p">)))</span>
+    <span class="p">(</span><span class="nf">setq</span> <span class="nv">project-file</span>
+          <span class="p">(</span><span class="nf">funcall</span> <span class="nv">completing-read-func</span>
+                   <span class="s">&quot;Project: &quot;</span>
+                   <span class="p">(</span><span class="nf">custom-org-project-files</span><span class="p">)</span>
+                   <span class="nv">nil</span>
+                   <span class="nv">t</span><span class="p">))))</span>
+</code></pre>
+</div>
+
+
+<p>You can see in the code example above that I decided to use the
+function <code>ido-completing-read</code> instead of <code>completing-read</code> if
+<code>ido-mode</code> available. (Check out <a href="http://www.emacswiki.org/emacs/InteractivelyDoThings">ido-mode</a> for further
+informations.)</p>
+
+<p>After that I put my <code>custom-org-project-chooser</code> function in a helper
+function where I define in which file the new task item should be
+placed and where in the file the task should be positioned.</p>
+
+<p>I used in the <code>re-search-forward</code> function with a speficied regulary
+expression to find the position in the file where I want to put the
+task.</p>
+
+<p>In my case I always put it after the project title header (like: <code>* My Project</code>).</p>
+
+<div class="highlight"><pre><code class="scheme"><span class="p">(</span><span class="nf">defun</span> <span class="nv">custom-org-project-file</span> <span class="p">()</span>
+  <span class="p">(</span><span class="nf">find-file</span> <span class="p">(</span><span class="nf">concat</span> <span class="nv">custom--org-project-file-path</span> <span class="p">(</span><span class="nf">custom-org-projects-chooser</span><span class="p">)))</span>
+  <span class="p">(</span><span class="nf">goto-char</span> <span class="p">(</span><span class="nf">point-min</span><span class="p">))</span>
+  <span class="p">(</span><span class="nf">re-search-forward</span> <span class="s">&quot;^\*\s*.+\n&quot;</span> <span class="nv">nil</span> <span class="nv">t</span><span class="p">)</span>
+  <span class="p">(</span><span class="nb">newline </span><span class="mi">1</span><span class="p">))</span>
+</code></pre>
+</div>
+
+
+<p>At last I created a Capture template from the type <code>function</code> which
+calls my <code>custom-org-project-file</code> function when a new project item
+will be created:</p>
+
+<div class="highlight"><pre><code class="scheme"><span class="p">(</span><span class="nf">setq</span> <span class="nv">org-capture-templates</span>
+      <span class="o">&#39;</span><span class="p">((</span><span class="s">&quot;p&quot;</span> <span class="s">&quot;Project Todo Files&quot;</span> <span class="nv">entry</span> <span class="p">(</span><span class="nf">function</span> <span class="nv">custom-org-project-file</span><span class="p">)</span>
+         <span class="s">&quot;** TODO %?\n  %T&quot;</span><span class="p">)))</span>
+</code></pre>
+</div>
+
+
+<p>Thats it! Bind this Capture template call to a key you like and you&rsquo;re
+ready to go and create your own project tasks on the fly.</p>
+
+<p>You find the whole source in my emacs configs <a href="https://github.com/tonini/dotfiles/blob/master/emacs.d/private/org-mode.el">repository</a>.</p>
+
+<h3>Summary</h3>
+
+<p>If you like to manage your task through the day I really
+recommend Capture and all his capabilites. Check the Capture <a href="http://orgmode.org/manual/Capture.html#Capture">manual</a>
+out and get yourself a better overview.</p>
+
+  <div id="social_buttons">
+    <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="emacsrookie" data-lang="en">Tweet</a>
+    <g:plusone size="medium"></g:plusone>
+  </div>
+
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'emacsrookie';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</article>
+
+
+      </div>
+
+      <footer id="copyright">
+        <p>&copy; 2011 emacsrookie.com, All Rights Reserved.</p>
+        <p class="rss">
+          <a href ="http://feeds.feedburner.com/emacsrookiecom">
+            <img src="/images/feed-16x16.png" alt="RSS Feed">
+          </a>
+        </p>
+      </footer>
+    </div>
+    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+    <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-2950562-2']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+  </body>
+</html>

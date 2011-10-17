@@ -10,9 +10,234 @@
     <atom:link href="http://emacsrookie.com/rss.xml" rel="self" type="application/rss+xml" />
     <description>Hints about the powerful emacs text editor</description>
     <language>en-us</language>
-    <pubDate>Mon, 10 Oct 2011 20:26:37 CEST</pubDate>
-    <lastBuildDate>Mon, 10 Oct 2011 20:26:37 CEST</lastBuildDate>
+    <pubDate>Mon, 17 Oct 2011 10:43:07 CEST</pubDate>
+    <lastBuildDate>Mon, 17 Oct 2011 10:43:07 CEST</lastBuildDate>
 
+    
+    <item>
+      <title>Capture the monkey</title>
+      <link>http://emacsrookie.com/2011/10/17/capture-the-monkey/</link>
+      <pubDate>Mon, 17 Oct 2011 00:00:00 CEST</pubDate>
+      <author>tonini.samuel@gmail.com (Samuel Tonini)</author>
+      <guid>http://emacsrookie.com/2011/10/17/capture-the-monkey</guid>
+      <description>&lt;p&gt;The first Emacsrookie article was about
+&lt;a href=&quot;http://emacsrookie.com/2011/09/13/do-you-remember/&quot;&gt;Remember&lt;/a&gt;, an
+Emacs built in package to create new tasks on the fly. There I
+promised to write a new article about how to do the same in a more
+recent way, with Capture.&lt;/p&gt;
+
+&lt;p&gt;I will show now how to use Capture, the way how
+&lt;a href=&quot;http://orgmode.org/&quot;&gt;Org Mode&lt;/a&gt; handles capturing new tasks on the
+fly. Capture is highly inspired by the Remember package and I
+recommend to switch to it if you still use Remember.&lt;/p&gt;
+
+&lt;p&gt;But why it&amp;rsquo;s so great? It&amp;rsquo;s really easy to use, it&amp;rsquo;s built in Org Mode
+and it brings powerful abilities to create and customize new task
+templates.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s check it out!&lt;/p&gt;
+
+&lt;h3&gt;How to use it straightforward?&lt;/h3&gt;
+
+&lt;p&gt;Org Mode ships in with Emacs. But if you like to get a more recent
+version of Org Mode, please check the
+&lt;a href=&quot;http://orgmode.org/manual/Installation.html#Installation&quot;&gt;install&lt;/a&gt;
+section in the Org Mode manual.&lt;/p&gt;
+
+&lt;p&gt;To create your first task, you have to define a default file in
+which the task should be added.&lt;/p&gt;
+
+&lt;p&gt;Just leave the path to the file in the following variable:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scheme&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;setq&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;org-default-notes-file&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;concat&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;org-directory&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;/tasks.org&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+
+&lt;p&gt;Done, now you&amp;rsquo;re ready to go!&lt;/p&gt;
+
+&lt;p&gt;Org Mode gives you the function &lt;code&gt;org-capture&lt;/code&gt; to open the &lt;code&gt;*Org
+select*&lt;/code&gt; buffer. At first, you just have three points to choose from,
+create a new task item, open customize (for create new Capture
+templates) or quit the buffer.&lt;/p&gt;
+
+&lt;p&gt;You should create a new task item at the outset, to get a feeling how
+it works. You shouldn&amp;rsquo;t have any problems to create a task, it&amp;rsquo;s very
+self-explinatory.&lt;/p&gt;
+
+&lt;p&gt;Maybe at this point you ask yourself what&amp;rsquo;s about this Capture
+template stuff you read about in the &lt;code&gt;*Org select*&lt;/code&gt; buffer.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s see what this template stuff is all about.&lt;/p&gt;
+
+&lt;h3&gt;Templates&lt;/h3&gt;
+
+&lt;p&gt;Capture gives you the ability to create your own templates for new
+task items. You just have to define a list for each of your templates
+and assign them to the &lt;code&gt;org-capture-templates&lt;/code&gt; variable.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scheme&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;setq&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;org-capture-templates&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;t&amp;quot;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Todo&amp;quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;entry&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;file+headline&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;~/org/tasks.org&amp;quot;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Tasks&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+             &lt;span class=&quot;s&quot;&gt;&amp;quot;* TODO %?\n  %t&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+
+&lt;p&gt;Ok, let&amp;rsquo;s see what kind of a template we have defined. When you create
+a template, you need to set the following items in the list:&lt;/p&gt;
+
+&lt;table class=&quot;function-list&quot;&gt;
+    &lt;tr&gt;
+        &lt;th class=&quot;functions&quot;&gt;Item value&lt;/th&gt;
+        &lt;th&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+        &lt;td&gt;&lt;span class=&quot;item&quot;&gt;keys&lt;/span&gt;&lt;/td&gt;
+        &lt;td&gt;A string which is used as a key for the template selection.&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+        &lt;td&gt;&lt;span class=&quot;item&quot;&gt;description&lt;/span&gt;&lt;/td&gt;
+        &lt;td&gt;The description of the template.&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+        &lt;td&gt;&lt;span class=&quot;item&quot;&gt;type&lt;/span&gt;&lt;/td&gt;
+        &lt;td&gt;The type of a new item.&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+        &lt;td&gt;&lt;span class=&quot;item&quot;&gt;target&lt;/span&gt;&lt;/td&gt;
+        &lt;td&gt;The specification where the new item should
+        be placed.&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+        &lt;td&gt;&lt;span class=&quot;item&quot;&gt;template&lt;/span&gt;&lt;/td&gt;
+        &lt;td&gt;The template for creating the capture item.&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+        &lt;td&gt;&lt;span class=&quot;item&quot;&gt;properties&lt;/span&gt;&lt;/td&gt;
+        &lt;td&gt;Additional properties.&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+
+
+&lt;p&gt;Check the &lt;a href=&quot;http://orgmode.org/manual/Template-elements.html#Template-elements&quot;&gt;manuel&lt;/a&gt; for detailed information.&lt;/p&gt;
+
+&lt;p&gt;Capture has some nice &lt;a href=&quot;http://orgmode.org/manual/Template-expansion.html#Template-expansion&quot;&gt;template expansion&lt;/a&gt; and you should read through
+the list.&lt;/p&gt;
+
+&lt;p&gt;In the above template definition I just used &lt;code&gt;%?&lt;/code&gt; and &lt;code&gt;%t&lt;/code&gt;. I mostly
+use them because I&amp;rsquo;m not a fancy boy. &lt;code&gt;%?&lt;/code&gt; means that after completing
+the template, the cursor will be positioned there. And the &lt;code&gt;%t&lt;/code&gt; is a
+simple date only timestamp which I use because I want that my new
+&lt;code&gt;TODO&lt;/code&gt; item will be shown up in the agenda view of Org Mode.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s define a new keybinding to your new Capture template, so you
+don’t have to go through the selecting process when you want to create a new
+task item:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scheme&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;define-key&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;global-map&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;C-c t&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;lambda &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;interactive&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;org-capture&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;nil&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;t&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+
+&lt;p&gt;So now you could create a new task item with &lt;code&gt;C-c t&lt;/code&gt; without going
+trough the template selection.&lt;/p&gt;
+
+&lt;h3&gt;Some customization&lt;/h3&gt;
+
+&lt;p&gt;I use Org Mode for a lot of things, also these article are written in Org
+mode. I manage also all my project with it, and because I have to
+switch between them through the day, I have written some code to
+create new items for a specific project on the fly.&lt;/p&gt;
+
+&lt;p&gt;First a variable which holds the path to the projects org files:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scheme&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;defvar&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;custom--org-project-file-path&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&amp;quot;~/org/projects/&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+
+&lt;p&gt;Second I defined a method who returns all the files which are in the
+org projects path:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scheme&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;defun&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;custom-org-project-files&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;directory-files&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;custom--org-project-file-path&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;nil&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;\\.org$&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+
+&lt;p&gt;Then I created a method which prompts for one of my project org files
+and I used the &lt;code&gt;completing-read&lt;/code&gt; function to get a nice file
+completing on my org project files:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scheme&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;defun&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;custom-org-project-chooser&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;let &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;completing-read-func&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;null&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ido-mode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                                  &lt;span class=&quot;ss&quot;&gt;&amp;#39;completing-read&lt;/span&gt;
+                                &lt;span class=&quot;ss&quot;&gt;&amp;#39;ido-completing-read&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;setq&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;project-file&lt;/span&gt;
+          &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;funcall&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;completing-read-func&lt;/span&gt;
+                   &lt;span class=&quot;s&quot;&gt;&amp;quot;Project: &amp;quot;&lt;/span&gt;
+                   &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;custom-org-project-files&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                   &lt;span class=&quot;nv&quot;&gt;nil&lt;/span&gt;
+                   &lt;span class=&quot;nv&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+
+&lt;p&gt;You can see in the code example above that I decided to use the
+function &lt;code&gt;ido-completing-read&lt;/code&gt; instead of &lt;code&gt;completing-read&lt;/code&gt; if
+&lt;code&gt;ido-mode&lt;/code&gt; available. (Check out &lt;a href=&quot;http://www.emacswiki.org/emacs/InteractivelyDoThings&quot;&gt;ido-mode&lt;/a&gt; for further
+informations.)&lt;/p&gt;
+
+&lt;p&gt;After that I put my &lt;code&gt;custom-org-project-chooser&lt;/code&gt; function in a helper
+function where I define in which file the new task item should be
+placed and where in the file the task should be positioned.&lt;/p&gt;
+
+&lt;p&gt;I used in the &lt;code&gt;re-search-forward&lt;/code&gt; function with a speficied regulary
+expression to find the position in the file where I want to put the
+task.&lt;/p&gt;
+
+&lt;p&gt;In my case I always put it after the project title header (like: &lt;code&gt;* My Project&lt;/code&gt;).&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scheme&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;defun&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;custom-org-project-file&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;find-file&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;concat&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;custom--org-project-file-path&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;custom-org-projects-chooser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;goto-char&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;point-min&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;re-search-forward&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;^\*\s*.+\n&amp;quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;nil&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;newline &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+
+&lt;p&gt;At last I created a Capture template from the type &lt;code&gt;function&lt;/code&gt; which
+calls my &lt;code&gt;custom-org-project-file&lt;/code&gt; function when a new project item
+will be created:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scheme&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;setq&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;org-capture-templates&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;p&amp;quot;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Project Todo Files&amp;quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;entry&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;custom-org-project-file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+         &lt;span class=&quot;s&quot;&gt;&amp;quot;** TODO %?\n  %T&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+
+&lt;p&gt;Thats it! Bind this Capture template call to a key you like and you&amp;rsquo;re
+ready to go and create your own project tasks on the fly.&lt;/p&gt;
+
+&lt;p&gt;You find the whole source in my emacs configs &lt;a href=&quot;https://github.com/tonini/dotfiles/blob/master/emacs.d/private/org-mode.el&quot;&gt;repository&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3&gt;Summary&lt;/h3&gt;
+
+&lt;p&gt;If you like to manage your task through the day I really
+recommend Capture and all his capabilites. Check the Capture &lt;a href=&quot;http://orgmode.org/manual/Capture.html#Capture&quot;&gt;manual&lt;/a&gt;
+out and get yourself a better overview.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Enter The Dired Dungeon</title>
