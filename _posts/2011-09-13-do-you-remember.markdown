@@ -10,7 +10,7 @@ without having to switch to my org file, I prefer Remember. Since
 Emacs version 23.1 Remember is built in and it's doing a good job
 without any special configurations needed.
 
-### How to use straight ahead?
+### Here's how to use it
 
 To jump in the note Remember buffer, simpy call the
 `remember` function. You will see an empty buffer if you are using it for the

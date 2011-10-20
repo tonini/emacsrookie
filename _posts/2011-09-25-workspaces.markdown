@@ -19,7 +19,7 @@ Perspective gives you tagged workspaces and because each perspective
 buffers, switching to a perspective will only make the buffers
 available which belong to it.
 
-### How to use it straight ahead?
+### Here's how to use it
 
 First you have to install perspective, you get the source on
 [Github](http://github.com/nex3/perspective-el).

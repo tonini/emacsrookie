@@ -21,7 +21,7 @@ templates.
 
 Let's check it out!
 
-### How to use it straightforward?
+### Here's how to use it
 
 Org Mode ships in with Emacs. But if you like to get a more recent
 version of Org Mode, please check the

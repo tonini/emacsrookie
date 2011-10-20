@@ -10,8 +10,8 @@
     <atom:link href="http://emacsrookie.com/rss.xml" rel="self" type="application/rss+xml" />
     <description>Hints about the powerful emacs text editor</description>
     <language>en-us</language>
-    <pubDate>Tue, 18 Oct 2011 09:10:21 CEST</pubDate>
-    <lastBuildDate>Tue, 18 Oct 2011 09:10:21 CEST</lastBuildDate>
+    <pubDate>Thu, 20 Oct 2011 09:47:03 CEST</pubDate>
+    <lastBuildDate>Thu, 20 Oct 2011 09:47:03 CEST</lastBuildDate>
 
     
     <item>
@@ -37,7 +37,7 @@ templates.&lt;/p&gt;
 
 &lt;p&gt;Let&amp;rsquo;s check it out!&lt;/p&gt;
 
-&lt;h3&gt;How to use it straightforward?&lt;/h3&gt;
+&lt;h3&gt;Here&amp;rsquo;s how to use it&lt;/h3&gt;
 
 &lt;p&gt;Org Mode ships in with Emacs. But if you like to get a more recent
 version of Org Mode, please check the
@@ -256,7 +256,7 @@ navigation abilities of Dired.&lt;/p&gt;
 function names. At the end there will be a list of the functions
 including the corresponding default keybindings.&lt;/p&gt;
 
-&lt;h3&gt;How to use it straightforward?&lt;/h3&gt;
+&lt;h3&gt;Here&amp;rsquo;s how to use it&lt;/h3&gt;
 
 &lt;p&gt;Dired is built into Emacs, so you don&amp;rsquo;t have to install anything.&lt;/p&gt;
 
@@ -449,7 +449,7 @@ Emacs with RVM and gives us a few nifty functions.&lt;/p&gt;
 &lt;code&gt;inf-ruby&lt;/code&gt; and &lt;code&gt;mode-compile&lt;/code&gt; automatically benefit from it and use the
 precise Ruby version.&lt;/p&gt;
 
-&lt;h3&gt;How to use it straightforward?&lt;/h3&gt;
+&lt;h3&gt;Here&amp;rsquo;s how to use it&lt;/h3&gt;
 
 &lt;p&gt;First you have to install rvm.el; you get the source on
 &lt;a href=&quot;https://github.com/senny/rvm.el&quot;&gt;Github&lt;/a&gt;.&lt;/p&gt;
@@ -558,7 +558,7 @@ It&amp;rsquo;s hard imagining not to be able to use it.&lt;/p&gt;
 buffers, switching to a perspective will only make the buffers
 available which belong to it.&lt;/p&gt;
 
-&lt;h3&gt;How to use it straight ahead?&lt;/h3&gt;
+&lt;h3&gt;Here&amp;rsquo;s how to use it&lt;/h3&gt;
 
 &lt;p&gt;First you have to install perspective, you get the source on
 &lt;a href=&quot;http://github.com/nex3/perspective-el&quot;&gt;Github&lt;/a&gt;.&lt;/p&gt;
@@ -653,7 +653,7 @@ without having to switch to my org file, I prefer Remember. Since
 Emacs version 23.1 Remember is built in and it&amp;rsquo;s doing a good job
 without any special configurations needed.&lt;/p&gt;
 
-&lt;h3&gt;How to use straight ahead?&lt;/h3&gt;
+&lt;h3&gt;Here&amp;rsquo;s how to use it&lt;/h3&gt;
 
 &lt;p&gt;To jump in the note Remember buffer, simpy call the
 &lt;code&gt;remember&lt;/code&gt; function. You will see an empty buffer if you are using it for the

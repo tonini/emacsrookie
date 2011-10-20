@@ -15,7 +15,7 @@ Throughout the article I won't refer to keybindings but instead to the
 function names. At the end there will be a list of the functions
 including the corresponding default keybindings.
 
-### How to use it straightforward?
+### Here's how to use it
 
 Dired is built into Emacs, so you don't have to install anything.
 

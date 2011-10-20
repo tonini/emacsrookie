@@ -19,7 +19,7 @@ One of the great advantages which rvm.el brings is that packages like
 `inf-ruby` and `mode-compile` automatically benefit from it and use the
 precise Ruby version.
 
-### How to use it straightforward?
+### Here's how to use it
 
 First you have to install rvm.el; you get the source on
 [Github](https://github.com/senny/rvm.el).
