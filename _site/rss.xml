@@ -10,9 +10,182 @@
     <atom:link href="http://emacsrookie.com/rss.xml" rel="self" type="application/rss+xml" />
     <description>Hints about the powerful emacs text editor</description>
     <language>en-us</language>
-    <pubDate>Thu, 20 Oct 2011 09:47:03 CEST</pubDate>
-    <lastBuildDate>Thu, 20 Oct 2011 09:47:03 CEST</lastBuildDate>
+    <pubDate>Wed, 26 Oct 2011 17:28:57 CEST</pubDate>
+    <lastBuildDate>Wed, 26 Oct 2011 17:28:57 CEST</lastBuildDate>
 
+    
+    <item>
+      <title>Do what you have to do</title>
+      <link>http://emacsrookie.com/2011/10/26/do-what-you-have-to-do/</link>
+      <pubDate>Wed, 26 Oct 2011 00:00:00 CEST</pubDate>
+      <author>tonini.samuel@gmail.com (Samuel Tonini)</author>
+      <guid>http://emacsrookie.com/2011/10/26/do-what-you-have-to-do</guid>
+      <description>&lt;p&gt;In the article &lt;a href=&quot;http://emacsrookie.com/2011/10/17/capture-the-monkey/&quot;&gt;Capture the monkey&lt;/a&gt; I wrote about the Capture feature
+from Org Mode, which gives you the ability to create task items on the
+fly. Now I will show you how I use this feature to create
+so-called TODO items.&lt;/p&gt;
+
+&lt;p&gt;You will see that the introduction I give you is enough to start and
+use the TODO feature to be productive in your task management
+daily grind. If you're looking for more detailed information about the
+TODO items, please consider to read the Org Mode &lt;a href=&quot;http://orgmode.org/manual/TODO-Items.html&quot;&gt;manual&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3&gt;Here's how to use it&lt;/h3&gt;
+
+&lt;p&gt;Ok, let's create our first TODO item.&lt;/p&gt;
+
+&lt;p&gt;To structure an Org Mode document you use headlines, and these start
+with one or more stars:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text&quot;&gt;* Top level
+** Second level
+*** Third level
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Now you see how to create headlines, to make a headline into a
+TODO item, just add the word &lt;code&gt;TODO&lt;/code&gt; after the stars and you get your
+first TODO item:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text&quot;&gt;** TODO Create your first todo item
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;By default, a TODO item has two states, &lt;code&gt;TODO&lt;/code&gt; and &lt;code&gt;DONE&lt;/code&gt; and to
+rotate through the different states use &lt;code&gt;(org-shiftright)&lt;/code&gt; or
+&lt;code&gt;(org-shiftleft)&lt;/code&gt; functions. At this time it just switches between &lt;code&gt;TODO&lt;/code&gt; and
+&lt;code&gt;DONE&lt;/code&gt;, but later when you have more keywords, it will also iterate
+through these.&lt;/p&gt;
+
+&lt;p&gt;Example of a &lt;code&gt;TODO&lt;/code&gt; item and a finished one marked as &lt;code&gt;DONE&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text&quot;&gt;** TODO Not done yet!
+** DONE I&amp;#39;m done!
+   CLOSED: [&amp;lt;Timestamp&amp;gt;]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;You see that in the &lt;code&gt;DONE&lt;/code&gt; marked task item is a &lt;code&gt;CLOSED&lt;/code&gt; keyword with a
+timestamp beside it. By default, if you finish a task item Org
+Mode will add a timestamp and a &lt;code&gt;CLOSED&lt;/code&gt; keyword, to inform you about
+the finished time of the task. This is very helpful to get more
+information in the agenda view.&lt;/p&gt;
+
+&lt;p&gt;By default the variable &lt;code&gt;org-log-done&lt;/code&gt; is set to &lt;code&gt;'time&lt;/code&gt;, which means
+that after you finish a task a timestamp will be added, as already
+mentioned above. But you could also add a note. Just assign &lt;code&gt;'note&lt;/code&gt;
+to the &lt;code&gt;org-log-done&lt;/code&gt; variable and Org Mode will prompt you for an
+additional note along with the timestamp.&lt;/p&gt;
+
+&lt;p&gt;One of my favorite features I couldn't work without are the &lt;a href=&quot;http://orgmode.org/manual/Clocking-commands.html#Clocking-commands&quot;&gt;clock
+commands&lt;/a&gt;. Imagine you're starting with a new task, you have to fix a
+bug in your code and have to manage the time you need to fix it. Org
+Mode comes along with punch-clock powers, which makes this kind of
+job very easy.&lt;/p&gt;
+
+&lt;p&gt;The function &lt;code&gt;(org-clock-in)&lt;/code&gt; starts the clock on the current item
+you're in and the vice-versa function &lt;code&gt;(org-clock-out)&lt;/code&gt; stops the
+clock.&lt;/p&gt;
+
+&lt;p&gt;Check out what this looks like:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text&quot;&gt;** TODO what&amp;#39;s the amount of time needed
+   CLOCK: [2011-10-26 Wed 14:31]--[2011-10-26 Wed 15:10] =&amp;gt;  0:39
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;In the example above I started the clock and stopped the clock 39
+minutes later. This feature is really great, because in the agenda
+view of Org Mode this clock information will give you an overview
+over how long we needed to fix our bugs.&lt;/p&gt;
+
+&lt;p&gt;For now you know enough to manage your task items. Go ahead and try this
+out.&lt;/p&gt;
+
+&lt;p&gt;Next I will show you how easy it is to create your own &lt;code&gt;TODO&lt;/code&gt; like
+keywords, for example something like &lt;code&gt;FEATURE&lt;/code&gt;, &lt;code&gt;BUG&lt;/code&gt; or &lt;code&gt;SUPPORT&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3&gt;Your own keywords&lt;/h3&gt;
+
+&lt;p&gt;In my daily grind I use a few more keywords than just a simple &lt;code&gt;TODO&lt;/code&gt;
+for my tasks. Org Mode gives you the possibility to add
+our own keywords really easily. The variable &lt;code&gt;org-todo-keywords&lt;/code&gt; gets
+all the task types we want to have:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scheme&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;setq&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;org-todo-keywords&lt;/span&gt;
+       &lt;span class=&quot;o&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;sequence&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;TODO&amp;quot;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;|&amp;quot;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;DONE&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+       &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;sequence&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;FEATURE&amp;quot;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;|&amp;quot;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;COMPLETED&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+       &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;sequence&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;BUG&amp;quot;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;|&amp;quot;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;FIXED&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+       &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;sequence&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;|&amp;quot;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;CANCELED&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Great, now you're ready to use this just like &lt;code&gt;TODO&lt;/code&gt; before.&lt;/p&gt;
+
+&lt;p&gt;What I really like is the possibility to create fast access &lt;code&gt;TODO&lt;/code&gt;
+states by just adding single keys in parentheses after a keyword.&lt;/p&gt;
+
+&lt;p&gt;Fast access state keys:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scheme&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;setq&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;org-todo-keywords&lt;/span&gt;
+       &lt;span class=&quot;o&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;sequence&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;TODO(t)&amp;quot;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;|&amp;quot;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;DONE(d)&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+       &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;sequence&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;FEATURE(f)&amp;quot;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;|&amp;quot;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;COMPLETED(c)&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+       &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;sequence&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;BUG(b)&amp;quot;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;|&amp;quot;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;FIXED(x)&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+       &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;sequence&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;|&amp;quot;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;CANCELED(a)&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;If you now use the &lt;code&gt;(org-todo)&lt;/code&gt; function, Org Mode prompts you for the kind of
+task key which you want to use, so you don't have to cycle through the
+task types with the &lt;code&gt;(org-shiftleft)&lt;/code&gt; or &lt;code&gt;(org-shiftright)&lt;/code&gt; functions
+anymore.&lt;/p&gt;
+
+&lt;h3&gt;Functions and default keybindings&lt;/h3&gt;
+
+&lt;table class=&quot;function-list&quot;&gt;
+    &lt;tr&gt;
+        &lt;th class=&quot;functions&quot;&gt;Function&lt;/th&gt;
+        &lt;th&gt;Keybinding&lt;/th&gt;
+        &lt;th&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;&lt;span class=&quot;code&quot;&gt;org-shiftright&lt;/span&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;span class=&quot;code&quot;&gt;S-RIGHT&lt;/span&gt;&lt;/td&gt;
+        &lt;td&gt;Cycling through the item state forwardly.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;&lt;span class=&quot;code&quot;&gt;org-shiftleft&lt;/span&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;span class=&quot;code&quot;&gt;S-LEFT&lt;/span&gt;&lt;/td&gt;
+        &lt;td&gt;Cycling through the item state backwards.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;&lt;span class=&quot;code&quot;&gt;org-clock-in&lt;/span&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;span class=&quot;code&quot;&gt;C-c C-x C-i&lt;/span&gt;&lt;/td&gt;
+        &lt;td&gt;Start the clock in the current task item.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;&lt;span class=&quot;code&quot;&gt;org-clock-out&lt;/span&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;span class=&quot;code&quot;&gt;C-c C-x C-o&lt;/span&gt;&lt;/td&gt;
+        &lt;td&gt;Stop the clock in the current task item.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;&lt;span class=&quot;code&quot;&gt;org-todo&lt;/span&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;span class=&quot;code&quot;&gt;C-c C-t&lt;/span&gt;&lt;/td&gt;
+        &lt;td&gt;Change the TODO state of an item. If other keywords are
+        set it prompts for one of these..&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;h3&gt;Summary&lt;/h3&gt;
+
+&lt;p&gt;You see Org Mode's TODO feature is very powerful and still easy to
+use. You get in touch with it in no time and you can use it for your
+daily programming routine.&lt;/p&gt;
+
+&lt;p&gt;There is certainly a lot of more stuff about the TODO Org Mode
+feature and it would be wise of you to check it out. &lt;a href=&quot;http://orgmode.org/manual/TODO-Items.html#TODO-Items&quot;&gt;Org Mode TODO manual&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Capture the monkey</title>
@@ -31,13 +204,13 @@ recent way, with Capture.&lt;/p&gt;
 fly. Capture is highly inspired by the Remember package and I
 recommend to switch to it if you still use Remember.&lt;/p&gt;
 
-&lt;p&gt;But why it&amp;rsquo;s so great? It&amp;rsquo;s really easy to use, it&amp;rsquo;s built in Org Mode
+&lt;p&gt;But why it's so great? It's really easy to use, it's built in Org Mode
 and it brings powerful abilities to create and customize new task
 templates.&lt;/p&gt;
 
-&lt;p&gt;Let&amp;rsquo;s check it out!&lt;/p&gt;
+&lt;p&gt;Let's check it out!&lt;/p&gt;
 
-&lt;h3&gt;Here&amp;rsquo;s how to use it&lt;/h3&gt;
+&lt;h3&gt;Here's how to use it&lt;/h3&gt;
 
 &lt;p&gt;Org Mode ships in with Emacs. But if you like to get a more recent
 version of Org Mode, please check the
@@ -53,8 +226,7 @@ which the task should be added.&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-
-&lt;p&gt;Done, now you&amp;rsquo;re ready to go!&lt;/p&gt;
+&lt;p&gt;Done, now you're ready to go!&lt;/p&gt;
 
 &lt;p&gt;Org Mode gives you the function &lt;code&gt;org-capture&lt;/code&gt; to open the &lt;code&gt;*Org
 select*&lt;/code&gt; buffer. At first, you just have three points to choose from,
@@ -62,13 +234,13 @@ create a new task item, open customize (for create new Capture
 templates) or quit the buffer.&lt;/p&gt;
 
 &lt;p&gt;You should create a new task item at the outset, to get a feeling how
-it works. You shouldn&amp;rsquo;t have any problems to create a task, it&amp;rsquo;s very
+it works. You shouldn't have any problems to create a task, it's very
 self-explinatory.&lt;/p&gt;
 
-&lt;p&gt;Maybe at this point you ask yourself what&amp;rsquo;s about this Capture
+&lt;p&gt;Maybe at this point you ask yourself what's about this Capture
 template stuff you read about in the &lt;code&gt;*Org select*&lt;/code&gt; buffer.&lt;/p&gt;
 
-&lt;p&gt;Let&amp;rsquo;s see what this template stuff is all about.&lt;/p&gt;
+&lt;p&gt;Let's see what this template stuff is all about.&lt;/p&gt;
 
 &lt;h3&gt;Templates&lt;/h3&gt;
 
@@ -82,8 +254,7 @@ and assign them to the &lt;code&gt;org-capture-templates&lt;/code&gt; variable.&
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-
-&lt;p&gt;Ok, let&amp;rsquo;s see what kind of a template we have defined. When you create
+&lt;p&gt;Ok, let's see what kind of a template we have defined. When you create
 a template, you need to set the following items in the list:&lt;/p&gt;
 
 &lt;table class=&quot;function-list&quot;&gt;
@@ -124,19 +295,18 @@ a template, you need to set the following items in the list:&lt;/p&gt;
     &lt;/tr&gt;
 &lt;/table&gt;
 
-
 &lt;p&gt;Check the &lt;a href=&quot;http://orgmode.org/manual/Template-elements.html#Template-elements&quot;&gt;manuel&lt;/a&gt; for detailed information.&lt;/p&gt;
 
 &lt;p&gt;Capture has some nice &lt;a href=&quot;http://orgmode.org/manual/Template-expansion.html#Template-expansion&quot;&gt;template expansion&lt;/a&gt; and you should read through
 the list.&lt;/p&gt;
 
 &lt;p&gt;In the above template definition I just used &lt;code&gt;%?&lt;/code&gt; and &lt;code&gt;%t&lt;/code&gt;. I mostly
-use them because I&amp;rsquo;m not a fancy boy. &lt;code&gt;%?&lt;/code&gt; means that after completing
+use them because I'm not a fancy boy. &lt;code&gt;%?&lt;/code&gt; means that after completing
 the template, the cursor will be positioned there. And the &lt;code&gt;%t&lt;/code&gt; is a
 simple date only timestamp which I use because I want that my new
 &lt;code&gt;TODO&lt;/code&gt; item will be shown up in the agenda view of Org Mode.&lt;/p&gt;
 
-&lt;p&gt;Let&amp;rsquo;s define a new keybinding to your new Capture template, so you
+&lt;p&gt;Let's define a new keybinding to your new Capture template, so you
 don’t have to go through the selecting process when you want to create a new
 task item:&lt;/p&gt;
 
@@ -144,7 +314,6 @@ task item:&lt;/p&gt;
   &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;lambda &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;interactive&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;org-capture&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;nil&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;t&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-
 
 &lt;p&gt;So now you could create a new task item with &lt;code&gt;C-c t&lt;/code&gt; without going
 trough the template selection.&lt;/p&gt;
@@ -163,7 +332,6 @@ create new items for a specific project on the fly.&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-
 &lt;p&gt;Second I defined a method who returns all the files which are in the
 org projects path:&lt;/p&gt;
 
@@ -171,7 +339,6 @@ org projects path:&lt;/p&gt;
   &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;directory-files&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;custom--org-project-file-path&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;nil&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;\\.org$&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-
 
 &lt;p&gt;Then I created a method which prompts for one of my project org files
 and I used the &lt;code&gt;completing-read&lt;/code&gt; function to get a nice file
@@ -189,7 +356,6 @@ completing on my org project files:&lt;/p&gt;
                    &lt;span class=&quot;nv&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))))&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-
 
 &lt;p&gt;You can see in the code example above that I decided to use the
 function &lt;code&gt;ido-completing-read&lt;/code&gt; instead of &lt;code&gt;completing-read&lt;/code&gt; if
@@ -214,7 +380,6 @@ task.&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-
 &lt;p&gt;At last I created a Capture template from the type &lt;code&gt;function&lt;/code&gt; which
 calls my &lt;code&gt;custom-org-project-file&lt;/code&gt; function when a new project item
 will be created:&lt;/p&gt;
@@ -225,8 +390,7 @@ will be created:&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-
-&lt;p&gt;Thats it! Bind this Capture template call to a key you like and you&amp;rsquo;re
+&lt;p&gt;Thats it! Bind this Capture template call to a key you like and you're
 ready to go and create your own project tasks on the fly.&lt;/p&gt;
 
 &lt;p&gt;You find the whole source in my emacs configs &lt;a href=&quot;https://github.com/tonini/dotfiles/blob/master/emacs.d/private/org-mode.el&quot;&gt;repository&lt;/a&gt;.&lt;/p&gt;
@@ -248,17 +412,17 @@ out and get yourself a better overview.&lt;/p&gt;
       <description>&lt;p&gt;When I talk with people about Emacs, they often complain about
 the missing project navigator.&lt;/p&gt;
 
-&lt;p&gt;Dired has a lot to offer that doesn&amp;rsquo;t fit in just one article, so
+&lt;p&gt;Dired has a lot to offer that doesn't fit in just one article, so
 I decided to split it into several parts. I start by showing the
 navigation abilities of Dired.&lt;/p&gt;
 
-&lt;p&gt;Throughout the article I won&amp;rsquo;t refer to keybindings but instead to the
+&lt;p&gt;Throughout the article I won't refer to keybindings but instead to the
 function names. At the end there will be a list of the functions
 including the corresponding default keybindings.&lt;/p&gt;
 
-&lt;h3&gt;Here&amp;rsquo;s how to use it&lt;/h3&gt;
+&lt;h3&gt;Here's how to use it&lt;/h3&gt;
 
-&lt;p&gt;Dired is built into Emacs, so you don&amp;rsquo;t have to install anything.&lt;/p&gt;
+&lt;p&gt;Dired is built into Emacs, so you don't have to install anything.&lt;/p&gt;
 
 &lt;p&gt;Enter Dired by calling the function &lt;code&gt;dired&lt;/code&gt;. The minibuffer opens and prompts you to choose a directory to open.&lt;/p&gt;
 
@@ -279,11 +443,10 @@ including the corresponding default keybindings.&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-
 &lt;p&gt;Dired creates a read-only buffer and lists all the files
 from your chosen directory.&lt;/p&gt;
 
-&lt;p&gt;In the Dired buffer you&amp;rsquo;re able to move around with the usual
+&lt;p&gt;In the Dired buffer you're able to move around with the usual
 movement functions. Only the &lt;code&gt;next-line&lt;/code&gt; and &lt;code&gt;previous-line&lt;/code&gt; functions are
 redefined. Generally when you use these functions, the cursor will be
 positioned at the beginning of the line, but in the Dired buffer it
@@ -291,12 +454,12 @@ goes to the beginning of the file name.&lt;/p&gt;
 
 &lt;p&gt;Next what you want to know is the &lt;code&gt;dired-goto-file&lt;/code&gt; function, which
 prompts for a file name in the minibuffer. It moves the cursor in the
-Dired buffer to the file you&amp;rsquo;ve chosen. Most of the time, you want to
+Dired buffer to the file you've chosen. Most of the time, you want to
 visit the file of the currently selected line. In this case you use
 &lt;code&gt;dired-find-file&lt;/code&gt; which opens the file straight away without prompting
 for a file name input.&lt;/p&gt;
 
-&lt;p&gt;Maybe you&amp;rsquo;re asking yourself now, but what about
+&lt;p&gt;Maybe you're asking yourself now, but what about
 sub directories? You have seen how easy it is to navigate in a single
 directory and visit specific files, maybe you found out that when you
 use &lt;code&gt;dired-goto-file&lt;/code&gt; on a sub directory it will list the files from
@@ -309,7 +472,7 @@ the &lt;code&gt;dired-maybe-insert-subdir&lt;/code&gt; function, Dired takes the
 on the current line and lists the content of the directory below
 the parent directory in the current Dired buffer.&lt;/p&gt;
 
-&lt;p&gt;Let&amp;rsquo;s see how this looks like:&lt;/p&gt;
+&lt;p&gt;Let's see how this looks like:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text&quot;&gt;  /Users/samuel/Projects/basement:
   total used in directory 48 available 151364824
@@ -333,9 +496,8 @@ the parent directory in the current Dired buffer.&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-
 &lt;p&gt;You see, the parent directory is on top and the sub directory you jumped
-to is listed below. It&amp;rsquo;s an easy and great overview. At this point
+to is listed below. It's an easy and great overview. At this point
 Dired gives you a few functions to move between the
 directories. &lt;code&gt;dired-prev-subdir&lt;/code&gt; to move up in the directory tree and the
 vice-versa function &lt;code&gt;dired-next-subdir&lt;/code&gt;. Also useful is
@@ -354,7 +516,6 @@ used when &lt;code&gt;ls&lt;/code&gt; is called. That means you could define how
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scheme&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;setq&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;dired-listing-switches&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;-lRS&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-
 
 &lt;p&gt;The &lt;code&gt;-&lt;/code&gt; in the &lt;code&gt;dired-listing-switches&lt;/code&gt; variable is a must or Dired
 wont work. I also recommend to add the &lt;code&gt;l&lt;/code&gt; option to the variable, as
@@ -418,7 +579,6 @@ options for &lt;code&gt;ls&lt;/code&gt;.&lt;/p&gt;
     &lt;/tr&gt;
 &lt;/table&gt;
 
-
 &lt;h3&gt;Summary&lt;/h3&gt;
 
 &lt;p&gt;Dired has everything you need to navigate through your daily projects
@@ -434,7 +594,7 @@ for further information.&lt;/p&gt;
       <pubDate>Sat, 01 Oct 2011 00:00:00 CEST</pubDate>
       <author>tonini.samuel@gmail.com (Samuel Tonini)</author>
       <guid>http://emacsrookie.com/2011/10/01/handle-ruby-versions</guid>
-      <description>&lt;p&gt;&lt;a href=&quot;http://beginrescueend.com/&quot;&gt;RVM&lt;/a&gt; it&amp;rsquo;s an extremly usefull tool if you
+      <description>&lt;p&gt;&lt;a href=&quot;http://beginrescueend.com/&quot;&gt;RVM&lt;/a&gt; it's an extremly usefull tool if you
 have to work with Ruby, different Ruby projects and specific
 Ruby Gemsets for your projects. RVM offers the solution for these
 needs by creating environments bound to a specific Ruby version and a
@@ -449,7 +609,7 @@ Emacs with RVM and gives us a few nifty functions.&lt;/p&gt;
 &lt;code&gt;inf-ruby&lt;/code&gt; and &lt;code&gt;mode-compile&lt;/code&gt; automatically benefit from it and use the
 precise Ruby version.&lt;/p&gt;
 
-&lt;h3&gt;Here&amp;rsquo;s how to use it&lt;/h3&gt;
+&lt;h3&gt;Here's how to use it&lt;/h3&gt;
 
 &lt;p&gt;First you have to install rvm.el; you get the source on
 &lt;a href=&quot;https://github.com/senny/rvm.el&quot;&gt;Github&lt;/a&gt;.&lt;/p&gt;
@@ -464,8 +624,7 @@ and add the following to your &lt;code&gt;~/.emacs&lt;/code&gt; file.&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-
-&lt;p&gt;Done, now you&amp;rsquo;re ready to use rvm.el.&lt;/p&gt;
+&lt;p&gt;Done, now you're ready to use rvm.el.&lt;/p&gt;
 
 &lt;p&gt;The first function you want to know is &lt;code&gt;rvm-activate-corresponding-ruby&lt;/code&gt;,
 this interactive function activates the corresponding Ruby version for
@@ -477,7 +636,7 @@ is no &lt;code&gt;.rvmrc&lt;/code&gt; file, the default ruby will be used instea
 could use the &lt;code&gt;rvm-use&lt;/code&gt; function, which is also as an interactive
 function available.&lt;/p&gt;
 
-&lt;p&gt;If you&amp;rsquo;re working with Ruby on a daily basis and have to rummage through
+&lt;p&gt;If you're working with Ruby on a daily basis and have to rummage through
 different Gem source code from time to time, then you will definitely
 need the interactive &lt;code&gt;rvm-open-gem&lt;/code&gt; function. This function gives you a
 list of all the Gems which are installed for the currently activated
@@ -486,7 +645,7 @@ which one to open.&lt;/p&gt;
 
 &lt;p&gt;In addition to that, if you have &lt;a href=&quot;/2011/09/25/workspaces/&quot;&gt;Perspective&lt;/a&gt; installed, &lt;code&gt;rvm-open-gem&lt;/code&gt; will
 open the chosen Gem directory in a new perspective, labeled with the
-Gem&amp;rsquo;s name. Now it&amp;rsquo;s easy to switch back and forth between your project and
+Gem's name. Now it's easy to switch back and forth between your project and
 the Gem source.&lt;/p&gt;
 
 &lt;h3&gt;More functions&lt;/h3&gt;
@@ -512,7 +671,6 @@ example how &lt;code&gt;rspec-mode&lt;/code&gt; uses it:&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-
 &lt;p&gt;And in the &lt;code&gt;rspec-compile&lt;/code&gt; function it uses the
 &lt;code&gt;rvm-activate-corresponding-ruby&lt;/code&gt; before it runs the specs.&lt;/p&gt;
 
@@ -527,10 +685,9 @@ example how &lt;code&gt;rspec-mode&lt;/code&gt; uses it:&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-
 &lt;h3&gt;Summary&lt;/h3&gt;
 
-&lt;p&gt;Rvm.el is a great package and if you&amp;rsquo;re a Ruby programmer it
+&lt;p&gt;Rvm.el is a great package and if you're a Ruby programmer it
 will make your daily adventures with Ruby a lot more exciting.&lt;/p&gt;
 
 &lt;p&gt;The source code is available on the &lt;a href=&quot;https://github.com/senny/rvm.el&quot;&gt;rvm.el&lt;/a&gt; repository on Github.&lt;/p&gt;
@@ -551,14 +708,14 @@ different desktops for your purposes.&lt;/p&gt;
 
 &lt;p&gt;In my daily grind I switch often between projects, fixing a bug
 there or reading some source codes here. This possibility of working this way is extremely helpful.
-It&amp;rsquo;s hard imagining not to be able to use it.&lt;/p&gt;
+It's hard imagining not to be able to use it.&lt;/p&gt;
 
 &lt;p&gt;Perspective gives you tagged workspaces and because each perspective
 (workspace) is composed of a window configuration and a set of
 buffers, switching to a perspective will only make the buffers
 available which belong to it.&lt;/p&gt;
 
-&lt;h3&gt;Here&amp;rsquo;s how to use it&lt;/h3&gt;
+&lt;h3&gt;Here's how to use it&lt;/h3&gt;
 
 &lt;p&gt;First you have to install perspective, you get the source on
 &lt;a href=&quot;http://github.com/nex3/perspective-el&quot;&gt;Github&lt;/a&gt;.&lt;/p&gt;
@@ -573,13 +730,12 @@ and add the following to your &lt;code&gt;~/.emacs&lt;/code&gt; file.&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-
 &lt;p&gt;From now on you are ready to go. Perspective is easy to use and you
 will be familiar with its functionality in no time.&lt;/p&gt;
 
 &lt;p&gt;What you will use mostly are &lt;code&gt;persp-switch&lt;/code&gt;. With this function you
 switch to the perspective you want, if the specified perspective
-doesn&amp;rsquo;t exist, it will create a new one and switch to it.&lt;/p&gt;
+doesn't exist, it will create a new one and switch to it.&lt;/p&gt;
 
 &lt;p&gt;Sometimes you need to rename a perspective and for this action use the function
  &lt;code&gt;persp-rename&lt;/code&gt;.&lt;/p&gt;
@@ -611,7 +767,6 @@ function using the macro.&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-
 &lt;p&gt;For instance, create a &lt;code&gt;@org&lt;/code&gt;
 named perspective and open the first agenda file.&lt;/p&gt;
 
@@ -622,13 +777,11 @@ named perspective and open the first agenda file.&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-
 &lt;p&gt;At last, just create a key binding for the function.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scheme&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;global-set-key&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;kbd&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;C-p o&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;custom-persp/org&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-
 
 &lt;p&gt;You find the whole source in the &lt;a href=&quot;https://github.com/senny/emacs-configs/blob/master/private/extensions/perspectives.el&quot;&gt;emacs-configs&lt;/a&gt; repository from Yves Senn.&lt;/p&gt;
 
@@ -648,12 +801,12 @@ more familiar with whats going on beyond all these functions.&lt;/p&gt;
       <author>tonini.samuel@gmail.com (Samuel Tonini)</author>
       <guid>http://emacsrookie.com/2011/09/13/do-you-remember</guid>
       <description>&lt;p&gt;Remember is a mode for Emacs, to simpy remember data.
-I&amp;rsquo;m a big fan of &lt;a href=&quot;http://orgmode.org/&quot;&gt;org-mode&lt;/a&gt;, but to create notes on the fly
+I'm a big fan of &lt;a href=&quot;http://orgmode.org/&quot;&gt;org-mode&lt;/a&gt;, but to create notes on the fly
 without having to switch to my org file, I prefer Remember. Since
-Emacs version 23.1 Remember is built in and it&amp;rsquo;s doing a good job
+Emacs version 23.1 Remember is built in and it's doing a good job
 without any special configurations needed.&lt;/p&gt;
 
-&lt;h3&gt;Here&amp;rsquo;s how to use it&lt;/h3&gt;
+&lt;h3&gt;Here's how to use it&lt;/h3&gt;
 
 &lt;p&gt;To jump in the note Remember buffer, simpy call the
 &lt;code&gt;remember&lt;/code&gt; function. You will see an empty buffer if you are using it for the
@@ -666,8 +819,7 @@ which you called the &lt;code&gt;remember&lt;/code&gt; function.&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-
-&lt;p&gt;Add your notes and after you&amp;rsquo;re finished, just call the &lt;code&gt;remember-finalize&lt;/code&gt; function,
+&lt;p&gt;Add your notes and after you're finished, just call the &lt;code&gt;remember-finalize&lt;/code&gt; function,
 or use the default key-binding &lt;code&gt;C-c C-c&lt;/code&gt;. By default the note will be
 stored in &lt;code&gt;&amp;lt;your_home_directory&amp;gt;/.notes&lt;/code&gt;.&lt;/p&gt;
 
@@ -681,17 +833,16 @@ I should refactor some code smell in this file...
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-
-&lt;p&gt;Done. That&amp;rsquo;s it! That&amp;rsquo;s the easy way to use it without any magic
+&lt;p&gt;Done. That's it! That's the easy way to use it without any magic
 and store your notes on the fly.&lt;/p&gt;
 
 &lt;h3&gt;More functions&lt;/h3&gt;
 
 &lt;p&gt;There are a few other functions which are also very useful.&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;remember-destroy&lt;/code&gt; just destroy the current Remember buffer you&amp;rsquo;re in.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;remember-destroy&lt;/code&gt; just destroy the current Remember buffer you're in.&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;remember-region&lt;/code&gt; without opening the selected region in the Remember buffer &amp;ndash; it saves the text directly into your notes file.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;remember-region&lt;/code&gt; without opening the selected region in the Remember buffer - it saves the text directly into your notes file.&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;remember-clipboard&lt;/code&gt; writes your current clipboard contents to your notes file.&lt;/p&gt;
 
@@ -710,7 +861,6 @@ an overview of the full functionality.&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-
 &lt;p&gt;Or the leading text, which is used to begin each created note.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scheme&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;defcustom&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;remember-leader-text&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;** &amp;quot;&lt;/span&gt;
@@ -720,13 +870,12 @@ an overview of the full functionality.&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-
 &lt;h3&gt;Further information&lt;/h3&gt;
 
 &lt;p&gt;A lot of people use Remember with org-mode (&lt;a href=&quot;http://orgmode.org/org-remember.pdf&quot;&gt;org-remember&lt;/a&gt; documentation).
 But since version 6.36, org-mode has its own Remember-like feature
 implemented (see &lt;a href=&quot;http://orgmode.org/manual/Capture.html&quot;&gt;Capture&lt;/a&gt;),
-If you&amp;rsquo;re using org-mode already, I would recommend to use that instead of Remember.&lt;/p&gt;
+If you're using org-mode already, I would recommend to use that instead of Remember.&lt;/p&gt;
 
 &lt;p&gt;In a further article I will show you how to use Capture, instead of Remember and how org-mode serves you some cool features with Capture.&lt;/p&gt;
 </description>

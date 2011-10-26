@@ -56,14 +56,14 @@ different desktops for your purposes.</p>
 
 <p>In my daily grind I switch often between projects, fixing a bug
 there or reading some source codes here. This possibility of working this way is extremely helpful.
-It&rsquo;s hard imagining not to be able to use it.</p>
+It's hard imagining not to be able to use it.</p>
 
 <p>Perspective gives you tagged workspaces and because each perspective
 (workspace) is composed of a window configuration and a set of
 buffers, switching to a perspective will only make the buffers
 available which belong to it.</p>
 
-<h3>Here&rsquo;s how to use it</h3>
+<h3>Here's how to use it</h3>
 
 <p>First you have to install perspective, you get the source on
 <a href="http://github.com/nex3/perspective-el">Github</a>.</p>
@@ -78,13 +78,12 @@ and add the following to your <code>~/.emacs</code> file.</p>
 </code></pre>
 </div>
 
-
 <p>From now on you are ready to go. Perspective is easy to use and you
 will be familiar with its functionality in no time.</p>
 
 <p>What you will use mostly are <code>persp-switch</code>. With this function you
 switch to the perspective you want, if the specified perspective
-doesn&rsquo;t exist, it will create a new one and switch to it.</p>
+doesn't exist, it will create a new one and switch to it.</p>
 
 <p>Sometimes you need to rename a perspective and for this action use the function
  <code>persp-rename</code>.</p>
@@ -116,7 +115,6 @@ function using the macro.</p>
 </code></pre>
 </div>
 
-
 <p>For instance, create a <code>@org</code>
 named perspective and open the first agenda file.</p>
 
@@ -127,13 +125,11 @@ named perspective and open the first agenda file.</p>
 </code></pre>
 </div>
 
-
 <p>At last, just create a key binding for the function.</p>
 
 <div class="highlight"><pre><code class="scheme"><span class="p">(</span><span class="nf">global-set-key</span> <span class="p">(</span><span class="nf">kbd</span> <span class="s">&quot;C-p o&quot;</span><span class="p">)</span> <span class="ss">&#39;custom-persp/org</span><span class="p">)</span>
 </code></pre>
 </div>
-
 
 <p>You find the whole source in the <a href="https://github.com/senny/emacs-configs/blob/master/private/extensions/perspectives.el">emacs-configs</a> repository from Yves Senn.</p>
 

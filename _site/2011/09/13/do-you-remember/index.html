@@ -49,12 +49,12 @@
     <h1>Do you remember?</h1>
   </header>
   <p>Remember is a mode for Emacs, to simpy remember data.
-I&rsquo;m a big fan of <a href="http://orgmode.org/">org-mode</a>, but to create notes on the fly
+I'm a big fan of <a href="http://orgmode.org/">org-mode</a>, but to create notes on the fly
 without having to switch to my org file, I prefer Remember. Since
-Emacs version 23.1 Remember is built in and it&rsquo;s doing a good job
+Emacs version 23.1 Remember is built in and it's doing a good job
 without any special configurations needed.</p>
 
-<h3>Here&rsquo;s how to use it</h3>
+<h3>Here's how to use it</h3>
 
 <p>To jump in the note Remember buffer, simpy call the
 <code>remember</code> function. You will see an empty buffer if you are using it for the
@@ -67,8 +67,7 @@ which you called the <code>remember</code> function.</p>
 </code></pre>
 </div>
 
-
-<p>Add your notes and after you&rsquo;re finished, just call the <code>remember-finalize</code> function,
+<p>Add your notes and after you're finished, just call the <code>remember-finalize</code> function,
 or use the default key-binding <code>C-c C-c</code>. By default the note will be
 stored in <code>&lt;your_home_directory&gt;/.notes</code>.</p>
 
@@ -82,17 +81,16 @@ I should refactor some code smell in this file...
 </code></pre>
 </div>
 
-
-<p>Done. That&rsquo;s it! That&rsquo;s the easy way to use it without any magic
+<p>Done. That's it! That's the easy way to use it without any magic
 and store your notes on the fly.</p>
 
 <h3>More functions</h3>
 
 <p>There are a few other functions which are also very useful.</p>
 
-<p><code>remember-destroy</code> just destroy the current Remember buffer you&rsquo;re in.</p>
+<p><code>remember-destroy</code> just destroy the current Remember buffer you're in.</p>
 
-<p><code>remember-region</code> without opening the selected region in the Remember buffer &ndash; it saves the text directly into your notes file.</p>
+<p><code>remember-region</code> without opening the selected region in the Remember buffer - it saves the text directly into your notes file.</p>
 
 <p><code>remember-clipboard</code> writes your current clipboard contents to your notes file.</p>
 
@@ -111,7 +109,6 @@ an overview of the full functionality.</p>
 </code></pre>
 </div>
 
-
 <p>Or the leading text, which is used to begin each created note.</p>
 
 <div class="highlight"><pre><code class="scheme"><span class="p">(</span><span class="nf">defcustom</span> <span class="nv">remember-leader-text</span> <span class="s">&quot;** &quot;</span>
@@ -121,13 +118,12 @@ an overview of the full functionality.</p>
 </code></pre>
 </div>
 
-
 <h3>Further information</h3>
 
 <p>A lot of people use Remember with org-mode (<a href="http://orgmode.org/org-remember.pdf">org-remember</a> documentation).
 But since version 6.36, org-mode has its own Remember-like feature
 implemented (see <a href="http://orgmode.org/manual/Capture.html">Capture</a>),
-If you&rsquo;re using org-mode already, I would recommend to use that instead of Remember.</p>
+If you're using org-mode already, I would recommend to use that instead of Remember.</p>
 
 <p>In a further article I will show you how to use Capture, instead of Remember and how org-mode serves you some cool features with Capture.</p>
 

@@ -59,13 +59,13 @@ recent way, with Capture.</p>
 fly. Capture is highly inspired by the Remember package and I
 recommend to switch to it if you still use Remember.</p>
 
-<p>But why it&rsquo;s so great? It&rsquo;s really easy to use, it&rsquo;s built in Org Mode
+<p>But why it's so great? It's really easy to use, it's built in Org Mode
 and it brings powerful abilities to create and customize new task
 templates.</p>
 
-<p>Let&rsquo;s check it out!</p>
+<p>Let's check it out!</p>
 
-<h3>Here&rsquo;s how to use it</h3>
+<h3>Here's how to use it</h3>
 
 <p>Org Mode ships in with Emacs. But if you like to get a more recent
 version of Org Mode, please check the
@@ -81,8 +81,7 @@ which the task should be added.</p>
 </code></pre>
 </div>
 
-
-<p>Done, now you&rsquo;re ready to go!</p>
+<p>Done, now you're ready to go!</p>
 
 <p>Org Mode gives you the function <code>org-capture</code> to open the <code>*Org
 select*</code> buffer. At first, you just have three points to choose from,
@@ -90,13 +89,13 @@ create a new task item, open customize (for create new Capture
 templates) or quit the buffer.</p>
 
 <p>You should create a new task item at the outset, to get a feeling how
-it works. You shouldn&rsquo;t have any problems to create a task, it&rsquo;s very
+it works. You shouldn't have any problems to create a task, it's very
 self-explinatory.</p>
 
-<p>Maybe at this point you ask yourself what&rsquo;s about this Capture
+<p>Maybe at this point you ask yourself what's about this Capture
 template stuff you read about in the <code>*Org select*</code> buffer.</p>
 
-<p>Let&rsquo;s see what this template stuff is all about.</p>
+<p>Let's see what this template stuff is all about.</p>
 
 <h3>Templates</h3>
 
@@ -110,8 +109,7 @@ and assign them to the <code>org-capture-templates</code> variable.</p>
 </code></pre>
 </div>
 
-
-<p>Ok, let&rsquo;s see what kind of a template we have defined. When you create
+<p>Ok, let's see what kind of a template we have defined. When you create
 a template, you need to set the following items in the list:</p>
 
 <table class="function-list">
@@ -152,19 +150,18 @@ a template, you need to set the following items in the list:</p>
     </tr>
 </table>
 
-
 <p>Check the <a href="http://orgmode.org/manual/Template-elements.html#Template-elements">manuel</a> for detailed information.</p>
 
 <p>Capture has some nice <a href="http://orgmode.org/manual/Template-expansion.html#Template-expansion">template expansion</a> and you should read through
 the list.</p>
 
 <p>In the above template definition I just used <code>%?</code> and <code>%t</code>. I mostly
-use them because I&rsquo;m not a fancy boy. <code>%?</code> means that after completing
+use them because I'm not a fancy boy. <code>%?</code> means that after completing
 the template, the cursor will be positioned there. And the <code>%t</code> is a
 simple date only timestamp which I use because I want that my new
 <code>TODO</code> item will be shown up in the agenda view of Org Mode.</p>
 
-<p>Let&rsquo;s define a new keybinding to your new Capture template, so you
+<p>Let's define a new keybinding to your new Capture template, so you
 don’t have to go through the selecting process when you want to create a new
 task item:</p>
 
@@ -172,7 +169,6 @@ task item:</p>
   <span class="p">(</span><span class="k">lambda </span><span class="p">()</span> <span class="p">(</span><span class="nf">interactive</span><span class="p">)</span> <span class="p">(</span><span class="nf">org-capture</span> <span class="nv">nil</span> <span class="s">&quot;t&quot;</span><span class="p">)))</span>
 </code></pre>
 </div>
-
 
 <p>So now you could create a new task item with <code>C-c t</code> without going
 trough the template selection.</p>
@@ -191,7 +187,6 @@ create new items for a specific project on the fly.</p>
 </code></pre>
 </div>
 
-
 <p>Second I defined a method who returns all the files which are in the
 org projects path:</p>
 
@@ -199,7 +194,6 @@ org projects path:</p>
   <span class="p">(</span><span class="nf">directory-files</span> <span class="nv">custom--org-project-file-path</span> <span class="nv">nil</span> <span class="s">&quot;\\.org$&quot;</span><span class="p">))</span>
 </code></pre>
 </div>
-
 
 <p>Then I created a method which prompts for one of my project org files
 and I used the <code>completing-read</code> function to get a nice file
@@ -217,7 +211,6 @@ completing on my org project files:</p>
                    <span class="nv">t</span><span class="p">))))</span>
 </code></pre>
 </div>
-
 
 <p>You can see in the code example above that I decided to use the
 function <code>ido-completing-read</code> instead of <code>completing-read</code> if
@@ -242,7 +235,6 @@ task.</p>
 </code></pre>
 </div>
 
-
 <p>At last I created a Capture template from the type <code>function</code> which
 calls my <code>custom-org-project-file</code> function when a new project item
 will be created:</p>
@@ -253,8 +245,7 @@ will be created:</p>
 </code></pre>
 </div>
 
-
-<p>Thats it! Bind this Capture template call to a key you like and you&rsquo;re
+<p>Thats it! Bind this Capture template call to a key you like and you're
 ready to go and create your own project tasks on the fly.</p>
 
 <p>You find the whole source in my emacs configs <a href="https://github.com/tonini/dotfiles/blob/master/emacs.d/private/org-mode.el">repository</a>.</p>

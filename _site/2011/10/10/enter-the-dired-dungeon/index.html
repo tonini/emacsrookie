@@ -51,17 +51,17 @@
   <p>When I talk with people about Emacs, they often complain about
 the missing project navigator.</p>
 
-<p>Dired has a lot to offer that doesn&rsquo;t fit in just one article, so
+<p>Dired has a lot to offer that doesn't fit in just one article, so
 I decided to split it into several parts. I start by showing the
 navigation abilities of Dired.</p>
 
-<p>Throughout the article I won&rsquo;t refer to keybindings but instead to the
+<p>Throughout the article I won't refer to keybindings but instead to the
 function names. At the end there will be a list of the functions
 including the corresponding default keybindings.</p>
 
-<h3>Here&rsquo;s how to use it</h3>
+<h3>Here's how to use it</h3>
 
-<p>Dired is built into Emacs, so you don&rsquo;t have to install anything.</p>
+<p>Dired is built into Emacs, so you don't have to install anything.</p>
 
 <p>Enter Dired by calling the function <code>dired</code>. The minibuffer opens and prompts you to choose a directory to open.</p>
 
@@ -82,11 +82,10 @@ including the corresponding default keybindings.</p>
 </code></pre>
 </div>
 
-
 <p>Dired creates a read-only buffer and lists all the files
 from your chosen directory.</p>
 
-<p>In the Dired buffer you&rsquo;re able to move around with the usual
+<p>In the Dired buffer you're able to move around with the usual
 movement functions. Only the <code>next-line</code> and <code>previous-line</code> functions are
 redefined. Generally when you use these functions, the cursor will be
 positioned at the beginning of the line, but in the Dired buffer it
@@ -94,12 +93,12 @@ goes to the beginning of the file name.</p>
 
 <p>Next what you want to know is the <code>dired-goto-file</code> function, which
 prompts for a file name in the minibuffer. It moves the cursor in the
-Dired buffer to the file you&rsquo;ve chosen. Most of the time, you want to
+Dired buffer to the file you've chosen. Most of the time, you want to
 visit the file of the currently selected line. In this case you use
 <code>dired-find-file</code> which opens the file straight away without prompting
 for a file name input.</p>
 
-<p>Maybe you&rsquo;re asking yourself now, but what about
+<p>Maybe you're asking yourself now, but what about
 sub directories? You have seen how easy it is to navigate in a single
 directory and visit specific files, maybe you found out that when you
 use <code>dired-goto-file</code> on a sub directory it will list the files from
@@ -112,7 +111,7 @@ the <code>dired-maybe-insert-subdir</code> function, Dired takes the directory
 on the current line and lists the content of the directory below
 the parent directory in the current Dired buffer.</p>
 
-<p>Let&rsquo;s see how this looks like:</p>
+<p>Let's see how this looks like:</p>
 
 <div class="highlight"><pre><code class="text">  /Users/samuel/Projects/basement:
   total used in directory 48 available 151364824
@@ -136,9 +135,8 @@ the parent directory in the current Dired buffer.</p>
 </code></pre>
 </div>
 
-
 <p>You see, the parent directory is on top and the sub directory you jumped
-to is listed below. It&rsquo;s an easy and great overview. At this point
+to is listed below. It's an easy and great overview. At this point
 Dired gives you a few functions to move between the
 directories. <code>dired-prev-subdir</code> to move up in the directory tree and the
 vice-versa function <code>dired-next-subdir</code>. Also useful is
@@ -157,7 +155,6 @@ used when <code>ls</code> is called. That means you could define how the command
 <div class="highlight"><pre><code class="scheme"><span class="p">(</span><span class="nf">setq</span> <span class="nv">dired-listing-switches</span> <span class="s">&quot;-lRS&quot;</span><span class="p">)</span>
 </code></pre>
 </div>
-
 
 <p>The <code>-</code> in the <code>dired-listing-switches</code> variable is a must or Dired
 wont work. I also recommend to add the <code>l</code> option to the variable, as
@@ -220,7 +217,6 @@ options for <code>ls</code>.</p>
         <td>Opens the content of the directory on the current line in the Dired buffer.</td>
     </tr>
 </table>
-
 
 <h3>Summary</h3>
 

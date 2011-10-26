@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <meta name="description" content="">
+    <meta name="author" content="Samuel Tonini">
+
+    <link rel="stylesheet" href="/css/reset.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="/css/application.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="/css/code.css" type="text/css" media="screen, projection" />
+
+    <title>Do what you have to do EmacsRookie</title>
+
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-2950562-2']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+  </head>
+  <body>
+    <div id="container">
+      <nav id="main_nav">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+        </ul>
+      </nav>
+
+      <header id="topbar">
+        <a href="/"><h1>emacs<span class="emacs">rookie</span></h1></a>
+        <h2>Hints about the powerful emacs text editor</h2>
+      </header>
+
+      <div id="main" role="main">
+        
+
+<article class="post">
+  <header>
+    <h2><span class="hint">Hint #6</span>October 26, 2011</h2>
+    <h1>Do what you have to do</h1>
+  </header>
+  <p>In the article <a href="http://emacsrookie.com/2011/10/17/capture-the-monkey/">Capture the monkey</a> I wrote about the Capture feature
+from Org Mode, which gives you the ability to create task items on the
+fly. Now I will show you how I use this feature to create
+so-called TODO items.</p>
+
+<p>You will see that the introduction I give you is enough to start and
+use the TODO feature to be productive in your task management
+daily grind. If you're looking for more detailed information about the
+TODO items, please consider to read the Org Mode <a href="http://orgmode.org/manual/TODO-Items.html">manual</a>.</p>
+
+<h3>Here's how to use it</h3>
+
+<p>Ok, let's create our first TODO item.</p>
+
+<p>To structure an Org Mode document you use headlines, and these start
+with one or more stars:</p>
+
+<div class="highlight"><pre><code class="text">* Top level
+** Second level
+*** Third level
+</code></pre>
+</div>
+
+<p>Now you see how to create headlines, to make a headline into a
+TODO item, just add the word <code>TODO</code> after the stars and you get your
+first TODO item:</p>
+
+<div class="highlight"><pre><code class="text">** TODO Create your first todo item
+</code></pre>
+</div>
+
+<p>By default, a TODO item has two states, <code>TODO</code> and <code>DONE</code> and to
+rotate through the different states use <code>(org-shiftright)</code> or
+<code>(org-shiftleft)</code> functions. At this time it just switches between <code>TODO</code> and
+<code>DONE</code>, but later when you have more keywords, it will also iterate
+through these.</p>
+
+<p>Example of a <code>TODO</code> item and a finished one marked as <code>DONE</code>:</p>
+
+<div class="highlight"><pre><code class="text">** TODO Not done yet!
+** DONE I&#39;m done!
+   CLOSED: [&lt;Timestamp&gt;]
+</code></pre>
+</div>
+
+<p>You see that in the <code>DONE</code> marked task item is a <code>CLOSED</code> keyword with a
+timestamp beside it. By default, if you finish a task item Org
+Mode will add a timestamp and a <code>CLOSED</code> keyword, to inform you about
+the finished time of the task. This is very helpful to get more
+information in the agenda view.</p>
+
+<p>By default the variable <code>org-log-done</code> is set to <code>'time</code>, which means
+that after you finish a task a timestamp will be added, as already
+mentioned above. But you could also add a note. Just assign <code>'note</code>
+to the <code>org-log-done</code> variable and Org Mode will prompt you for an
+additional note along with the timestamp.</p>
+
+<p>One of my favorite features I couldn't work without are the <a href="http://orgmode.org/manual/Clocking-commands.html#Clocking-commands">clock
+commands</a>. Imagine you're starting with a new task, you have to fix a
+bug in your code and have to manage the time you need to fix it. Org
+Mode comes along with punch-clock powers, which makes this kind of
+job very easy.</p>
+
+<p>The function <code>(org-clock-in)</code> starts the clock on the current item
+you're in and the vice-versa function <code>(org-clock-out)</code> stops the
+clock.</p>
+
+<p>Check out what this looks like:</p>
+
+<div class="highlight"><pre><code class="text">** TODO what&#39;s the amount of time needed
+   CLOCK: [2011-10-26 Wed 14:31]--[2011-10-26 Wed 15:10] =&gt;  0:39
+</code></pre>
+</div>
+
+<p>In the example above I started the clock and stopped the clock 39
+minutes later. This feature is really great, because in the agenda
+view of Org Mode this clock information will give you an overview
+over how long we needed to fix our bugs.</p>
+
+<p>For now you know enough to manage your task items. Go ahead and try this
+out.</p>
+
+<p>Next I will show you how easy it is to create your own <code>TODO</code> like
+keywords, for example something like <code>FEATURE</code>, <code>BUG</code> or <code>SUPPORT</code>.</p>
+
+<h3>Your own keywords</h3>
+
+<p>In my daily grind I use a few more keywords than just a simple <code>TODO</code>
+for my tasks. Org Mode gives you the possibility to add
+our own keywords really easily. The variable <code>org-todo-keywords</code> gets
+all the task types we want to have:</p>
+
+<div class="highlight"><pre><code class="scheme"><span class="p">(</span><span class="nf">setq</span> <span class="nv">org-todo-keywords</span>
+       <span class="o">&#39;</span><span class="p">((</span><span class="nf">sequence</span> <span class="s">&quot;TODO&quot;</span> <span class="s">&quot;|&quot;</span> <span class="s">&quot;DONE&quot;</span><span class="p">)</span>
+       <span class="p">(</span><span class="nf">sequence</span> <span class="s">&quot;FEATURE&quot;</span> <span class="s">&quot;|&quot;</span> <span class="s">&quot;COMPLETED&quot;</span><span class="p">)</span>
+       <span class="p">(</span><span class="nf">sequence</span> <span class="s">&quot;BUG&quot;</span> <span class="s">&quot;|&quot;</span> <span class="s">&quot;FIXED&quot;</span><span class="p">)</span>
+       <span class="p">(</span><span class="nf">sequence</span> <span class="s">&quot;|&quot;</span> <span class="s">&quot;CANCELED&quot;</span><span class="p">)))</span>
+</code></pre>
+</div>
+
+<p>Great, now you're ready to use this just like <code>TODO</code> before.</p>
+
+<p>What I really like is the possibility to create fast access <code>TODO</code>
+states by just adding single keys in parentheses after a keyword.</p>
+
+<p>Fast access state keys:</p>
+
+<div class="highlight"><pre><code class="scheme"><span class="p">(</span><span class="nf">setq</span> <span class="nv">org-todo-keywords</span>
+       <span class="o">&#39;</span><span class="p">((</span><span class="nf">sequence</span> <span class="s">&quot;TODO(t)&quot;</span> <span class="s">&quot;|&quot;</span> <span class="s">&quot;DONE(d)&quot;</span><span class="p">)</span>
+       <span class="p">(</span><span class="nf">sequence</span> <span class="s">&quot;FEATURE(f)&quot;</span> <span class="s">&quot;|&quot;</span> <span class="s">&quot;COMPLETED(c)&quot;</span><span class="p">)</span>
+       <span class="p">(</span><span class="nf">sequence</span> <span class="s">&quot;BUG(b)&quot;</span> <span class="s">&quot;|&quot;</span> <span class="s">&quot;FIXED(x)&quot;</span><span class="p">)</span>
+       <span class="p">(</span><span class="nf">sequence</span> <span class="s">&quot;|&quot;</span> <span class="s">&quot;CANCELED(a)&quot;</span><span class="p">)))</span>
+</code></pre>
+</div>
+
+<p>If you now use the <code>(org-todo)</code> function, Org Mode prompts you for the kind of
+task key which you want to use, so you don't have to cycle through the
+task types with the <code>(org-shiftleft)</code> or <code>(org-shiftright)</code> functions
+anymore.</p>
+
+<h3>Functions and default keybindings</h3>
+
+<table class="function-list">
+    <tr>
+        <th class="functions">Function</th>
+        <th>Keybinding</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td><span class="code">org-shiftright</span></td>
+        <td><span class="code">S-RIGHT</span></td>
+        <td>Cycling through the item state forwardly.</td>
+    </tr>
+    <tr>
+        <td><span class="code">org-shiftleft</span></td>
+        <td><span class="code">S-LEFT</span></td>
+        <td>Cycling through the item state backwards.</td>
+    </tr>
+    <tr>
+        <td><span class="code">org-clock-in</span></td>
+        <td><span class="code">C-c C-x C-i</span></td>
+        <td>Start the clock in the current task item.</td>
+    </tr>
+    <tr>
+        <td><span class="code">org-clock-out</span></td>
+        <td><span class="code">C-c C-x C-o</span></td>
+        <td>Stop the clock in the current task item.</td>
+    </tr>
+    <tr>
+        <td><span class="code">org-todo</span></td>
+        <td><span class="code">C-c C-t</span></td>
+        <td>Change the TODO state of an item. If other keywords are
+        set it prompts for one of these..</td>
+    </tr>
+</table>
+
+<h3>Summary</h3>
+
+<p>You see Org Mode's TODO feature is very powerful and still easy to
+use. You get in touch with it in no time and you can use it for your
+daily programming routine.</p>
+
+<p>There is certainly a lot of more stuff about the TODO Org Mode
+feature and it would be wise of you to check it out. <a href="http://orgmode.org/manual/TODO-Items.html#TODO-Items">Org Mode TODO manual</a></p>
+
+  <div id="social_buttons">
+   <!-- AddThis Button BEGIN -->
+   <div class="addthis_toolbox addthis_default_style ">
+     <a class="addthis_button_preferred_1"></a>
+     <a class="addthis_button_preferred_2"></a>
+     <a class="addthis_button_preferred_3"></a>
+     <a class="addthis_button_preferred_4"></a>
+     <a class="addthis_button_compact"></a>
+     <a class="addthis_counter addthis_bubble_style"></a>
+   </div>
+   <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e9d23cf15ea8768"></script>
+   <!-- AddThis Button END -->
+  </div>
+
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'emacsrookie';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</article>
+
+
+      </div>
+
+      <footer id="copyright">
+        <p>&copy; 2011 emacsrookie.com, All Rights Reserved.</p>
+        <p class="rss">
+          <a href ="http://feeds.feedburner.com/emacsrookiecom">
+            <img src="/images/feed-16x16.png" alt="RSS Feed">
+          </a>
+        </p>
+      </footer>
+    </div>
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-2950562-2']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+  </body>
+</html>
